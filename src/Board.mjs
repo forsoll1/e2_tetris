@@ -21,6 +21,16 @@ export class Board {
     this.board[0][middle] = shape
   }
 
+  tick(){
+    let rowNum;
+    let colNum;
+    for (let rowIndex = 0; rowIndex < this.board.length; rowIndex++) {
+      for (let colIndex = 0; colIndex < this.board[rowIndex].length; colIndex++) {
+        if (this.board[rowIndex][colIndex] != "."){
+          rowNum = rowIndex
+          colNum = colIndex}}}
+  }
+
   toString() {
     let boardLines = [] 
     for (const line of this.board) {
