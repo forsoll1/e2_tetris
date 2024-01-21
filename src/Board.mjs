@@ -2,18 +2,25 @@ export class Board {
   width;
   height;
   board;
+  newBoard;
 
   constructor(width, height) {
     this.width = width;
     this.height = height;
     this.board = new Array();
+    this.newBoard = new Array();
     this.initBoard()
   }
 
   initBoard(){
+    let rowAsArray = new Array()
+    for (let index = 0; index < this.width; index++) {
+      rowAsArray.push(".")
+    }
     let row = ".".repeat(this.width) + "\n"
     for (let index = 0; index < this.height; index++) {
       this.board.push(row)
+      this.newBoard.push(rowAsArray)
     }
   }
 
