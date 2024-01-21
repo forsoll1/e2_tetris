@@ -1,30 +1,29 @@
 export class Board {
   width;
   height;
-  newBoard;
+  board;
 
   constructor(width, height) {
     this.width = width;
     this.height = height;
-    this.newBoard = new Array();
+    this.board = new Array();
     this.initBoard()
   }
 
   initBoard(){
     for (let index = 0; index < this.height; index++) {
-      this.newBoard.push(Array(this.width).fill("."))
+      this.board.push(Array(this.width).fill("."))
     }
   }
-
   
   drop(shape){
     let middle = Math.floor(this.width/2)
-    this.newBoard[0][middle] = shape
+    this.board[0][middle] = shape
   }
 
   toString() {
     let boardLines = [] 
-    for (const line of this.newBoard) {
+    for (const line of this.board) {
       let newLine = line.join('') + "\n"
       boardLines.push(newLine)
     }
