@@ -28,7 +28,11 @@ export class Board {
       for (let colIndex = 0; colIndex < this.board[rowIndex].length; colIndex++) {
         if (this.board[rowIndex][colIndex] != "."){
           rowNum = rowIndex
-          colNum = colIndex}}}
+          colNum = colIndex}
+        }
+      }
+      this.board[rowNum + 1][colNum] = this.board[rowNum][colNum]
+      this.board[rowNum][colNum] = "."
   }
 
   toString() {
