@@ -23,13 +23,6 @@ export class Board {
   
   drop(shape){
     let middle = Math.floor(this.width/2)
-    let firstRow = ""
-    for (let index = 0; index < this.width; index++) {
-      if (index != middle){firstRow += "."}
-      else{firstRow += shape}
-    }
-    firstRow += "\n"
-    this.board[0] = firstRow
     // for new board
     this.newBoard[0][middle] = shape
   }
@@ -42,7 +35,6 @@ export class Board {
     }
 
     return boardLines.join('')
-    //return this.board.join('')
   }
 
 }
