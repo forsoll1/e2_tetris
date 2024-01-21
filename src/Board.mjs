@@ -31,7 +31,7 @@ export class Board {
     firstRow += "\n"
     this.board[0] = firstRow
     // for new board
-    this.newBoard[0][middle] = "X"
+    this.newBoard[0][middle] = shape
   }
 
   toString() {
@@ -40,7 +40,9 @@ export class Board {
       let newLine = line.join('') + "\n"
       boardLines.push(newLine)
     }
-    return this.board.join('')
+
+    return boardLines.join('')
+    //return this.board.join('')
   }
 
 }
