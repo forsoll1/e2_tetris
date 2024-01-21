@@ -13,14 +13,10 @@ export class Board {
   }
 
   initBoard(){
-    let rowAsArray = new Array()
-    for (let index = 0; index < this.width; index++) {
-      rowAsArray.push(".")
-    }
     let row = ".".repeat(this.width) + "\n"
     for (let index = 0; index < this.height; index++) {
       this.board.push(row)
-      this.newBoard.push(rowAsArray)
+      this.newBoard.push(Array(this.width).fill("."))
     }
   }
 
@@ -34,12 +30,16 @@ export class Board {
     }
     firstRow += "\n"
     this.board[0] = firstRow
-
     // for new board
     this.newBoard[0][middle] = "X"
   }
 
   toString() {
+    let boardLines = [] 
+    for (const line of this.newBoard) {
+      let newLine = line.join('') + "\n"
+      boardLines.push(newLine)
+    }
     return this.board.join('')
   }
 
