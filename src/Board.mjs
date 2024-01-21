@@ -34,6 +34,9 @@ export class Board {
     }
     firstRow += "\n"
     this.board[0] = firstRow
+
+    // for new board
+    this.newBoard[0][middle] = "X"
   }
 
   toString() {
