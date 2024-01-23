@@ -1,6 +1,5 @@
 export class RotatingShape {
 
-    objectShape;
     objectArray;
 
     constructor(shape){
@@ -13,10 +12,14 @@ export class RotatingShape {
             }
             this.objectArray.push(row)
         }
-        this.objectShape = shape.replace(/\t| /g, '') + "\n"
     }
 
     toString(){
-        return this.objectShape
+        let shapeLines = [] 
+        for (const line of this.objectArray) {
+          let newLine = line.join('') + "\n"
+          shapeLines.push(newLine)
+        }
+        return shapeLines.join('')
     }
 }
