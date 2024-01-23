@@ -3,12 +3,14 @@ export class Board {
   height;
   board;
   falling;
+  activeBlockPos;
 
   constructor(width, height) {
     this.width = width;
     this.height = height;
     this.board = new Array();
     this.falling = false
+    this.activeBlockPos = []
     this.initBoard()
   }
 
@@ -22,6 +24,7 @@ export class Board {
     if (!this.falling){
       let middle = Math.floor(this.width/2)
       this.board[0][middle] = shape
+      this.activeBlockPos = [0,middle]
       this.falling = true
     }else{throw("already falling")}
   }
