@@ -2,11 +2,13 @@ export class Board {
   width;
   height;
   board;
+  falling;
 
   constructor(width, height) {
     this.width = width;
     this.height = height;
     this.board = new Array();
+    this.falling = false
     this.initBoard()
   }
 
