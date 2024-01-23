@@ -40,15 +40,7 @@ export class Board {
     this.board[posY][posX] = "."
   
     /*
-    let rowNum;
-    let colNum;
 
-    for (let rowIndex = 0; rowIndex < this.board.length; rowIndex++) {
-      for (let colIndex = 0; colIndex < this.board[rowIndex].length; colIndex++) {
-        if (this.board[rowIndex][colIndex] != "."){
-          rowNum = rowIndex
-          colNum = colIndex}
-        }
       }
       if (rowNum + 1 < this.height){
         this.board[rowNum + 1][colNum] = this.board[rowNum][colNum]
