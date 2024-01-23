@@ -40,6 +40,10 @@ export class Board {
       this.board[rowNum][colNum] = "."
   }
 
+  hasFalling(){
+    return this.falling
+  }
+
   toString() {
     let boardLines = [] 
     for (const line of this.board) {
