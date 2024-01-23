@@ -29,18 +29,19 @@ export class Board {
     }else{throw("already falling")}
   }
 
-  tick(){
-    let rowNum;
-    let colNum;
-    /*
+  tick(){    
     let posX = this.activeBlockPos[1];
     let posY = this.activeBlockPos[0];
 
-    if (posY + 1 > this.height){falling = false; return}
-    if (this.board[posY+1][posX] != "."){falling = false; return}
+    if (posY + 1 === this.height){this.falling = false; return}
+    if (this.board[posY+1][posX] != "."){this.falling = false; return}
+    this.activeBlockPos[0] += 1
     this.board[posY+1][posX] = this.board[posY][posX]
     this.board[posY][posX] = "."
-    */
+  
+    /*
+    let rowNum;
+    let colNum;
 
     for (let rowIndex = 0; rowIndex < this.board.length; rowIndex++) {
       for (let colIndex = 0; colIndex < this.board[rowIndex].length; colIndex++) {
@@ -55,6 +56,7 @@ export class Board {
       }else{
         this.falling = false
       }
+      */
 
   }
 
