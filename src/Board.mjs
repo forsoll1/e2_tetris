@@ -38,8 +38,6 @@ export class Board {
     this.activeBlockPos[0] += 1
     this.board[posY+1][posX] = this.board[posY][posX]
     this.board[posY][posX] = "."
-
-
   }
 
   hasFalling(){
