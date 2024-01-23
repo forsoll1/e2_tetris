@@ -36,8 +36,13 @@ export class Board {
           colNum = colIndex}
         }
       }
-      this.board[rowNum + 1][colNum] = this.board[rowNum][colNum]
-      this.board[rowNum][colNum] = "."
+      if (rowNum + 1 < this.height){
+        this.board[rowNum + 1][colNum] = this.board[rowNum][colNum]
+        this.board[rowNum][colNum] = "."
+      }else{
+        this.falling = false
+      }
+
   }
 
   hasFalling(){
