@@ -38,17 +38,7 @@ export class Board {
     this.activeBlockPos[0] += 1
     this.board[posY+1][posX] = this.board[posY][posX]
     this.board[posY][posX] = "."
-  
-    /*
 
-      }
-      if (rowNum + 1 < this.height){
-        this.board[rowNum + 1][colNum] = this.board[rowNum][colNum]
-        this.board[rowNum][colNum] = "."
-      }else{
-        this.falling = false
-      }
-      */
 
   }
 
