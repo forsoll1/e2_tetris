@@ -19,8 +19,11 @@ export class Board {
   }
   
   drop(shape){
-    let middle = Math.floor(this.width/2)
-    this.board[0][middle] = shape
+    if (!this.falling){
+      let middle = Math.floor(this.width/2)
+      this.board[0][middle] = shape
+      this.falling = true
+    }else{throw("already falling")}
   }
 
   tick(){
