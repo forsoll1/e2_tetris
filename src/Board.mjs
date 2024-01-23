@@ -32,6 +32,16 @@ export class Board {
   tick(){
     let rowNum;
     let colNum;
+    /*
+    let posX = this.activeBlockPos[1];
+    let posY = this.activeBlockPos[0];
+
+    if (posY + 1 > this.height){falling = false; return}
+    if (this.board[posY+1][posX] != "."){falling = false; return}
+    this.board[posY+1][posX] = this.board[posY][posX]
+    this.board[posY][posX] = "."
+    */
+
     for (let rowIndex = 0; rowIndex < this.board.length; rowIndex++) {
       for (let colIndex = 0; colIndex < this.board[rowIndex].length; colIndex++) {
         if (this.board[rowIndex][colIndex] != "."){
