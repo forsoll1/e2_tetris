@@ -22,7 +22,7 @@ export class RotatingShape {
                 newArray[line][char] = this.objectArray[len-1-char][line]
             }
         }
-        return new RotatingShape(this.toString(newArray))
+        return new RotatingShape(this.toString(this.returnRotatedShape("right")))
     }
     rotateLeft(){
         let len = this.objectArray.length
@@ -32,7 +32,7 @@ export class RotatingShape {
                 newArray[line][char] = this.objectArray[char][len-1-line]
             }
         }
-        return new RotatingShape(this.toString(newArray))       
+        return new RotatingShape(this.toString(this.returnRotatedShape("left")))       
     }
     returnRotatedShape(direction){
         let len = this.objectArray.length
