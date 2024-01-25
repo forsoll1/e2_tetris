@@ -4,7 +4,7 @@ export class RotatingShape {
 
     constructor(shape){
         this.objectArray = []
-        let shapeAsArray = shape.replace(/\t| /g, '').split("\n")
+        let shapeAsArray = shape.replace(/\t| |\n$/g, '').split("\n")
         for (let line = 0; line < shapeAsArray.length; line++) {
             let row = []
             for (let char = 0; char < shapeAsArray[line].length; char++) {
@@ -19,15 +19,17 @@ export class RotatingShape {
         let newArray = JSON.parse(JSON.stringify(this.objectArray))
         for (let line = 0; line < len; line++) {
             for (let char = 0; char < len; char++) {
-                this.objectArray[line][char] = newArray[len-1-char][line]
+                newArray[line][char] = this.objectArray[len-1-char][line]
             }
         }
-        return this
+        return new RotatingShape(this.toString(newArray))
     }
-
-    toString(){
+    toString(arr){
+        let array1 = []
+        if (arr){array1 = arr}
+        else{array1 = this.objectArray}
         let shapeLines = [] 
-        for (let line of this.objectArray) {
+        for (let line of array1) {
           let newLine = line.join('') + "\n"
           shapeLines.push(newLine)
         }
