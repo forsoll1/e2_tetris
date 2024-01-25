@@ -15,18 +15,19 @@ export class RotatingShape {
     }
 
     rotateRight(){
+        let len = this.objectArray.length
         let newArray = JSON.parse(JSON.stringify(this.objectArray))
-        for (let line = 0; line < this.objectArray.length; line++) {
-            for (let char = 0; char < this.objectArray[line].length; char++) {
-                // Algo
+        for (let line = 0; line < len; line++) {
+            for (let char = 0; char < len; char++) {
+                this.objectArray[line][char] = newArray[len-1-char][line]
             }
         }
-        this.objectArray = newArray
+        return this
     }
 
     toString(){
         let shapeLines = [] 
-        for (const line of this.objectArray) {
+        for (let line of this.objectArray) {
           let newLine = line.join('') + "\n"
           shapeLines.push(newLine)
         }
