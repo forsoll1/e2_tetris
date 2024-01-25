@@ -15,18 +15,13 @@ export class RotatingShape {
     }
 
     rotateRight(){
-        let len = this.objectArray.length
-        let newArray = JSON.parse(JSON.stringify(this.objectArray))
-        for (let line = 0; line < len; line++) {
-            for (let char = 0; char < len; char++) {
-                newArray[line][char] = this.objectArray[len-1-char][line]
-            }
-        }
         return new RotatingShape(this.toString(this.returnRotatedShape("right")))
     }
+
     rotateLeft(){
         return new RotatingShape(this.toString(this.returnRotatedShape("left")))       
     }
+    
     returnRotatedShape(direction){
         let len = this.objectArray.length
         let newArray = JSON.parse(JSON.stringify(this.objectArray))
@@ -35,8 +30,10 @@ export class RotatingShape {
                 if(direction === "left"){newArray[line][char] = this.objectArray[char][len-1-line]}
                 if(direction === "right"){newArray[line][char] = this.objectArray[len-1-char][line]}
             }
-        }return newArray
+        }
+        return newArray
     }
+
     toString(arr){
         let array1 = []
         if (arr){array1 = arr}
