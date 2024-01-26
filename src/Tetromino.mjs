@@ -17,10 +17,12 @@ export class Tetromino{
    }
 
    rotateRight(){
+        if(this.objectArray.includes("I")){ return new Tetromino(rotateISHAPE()) }
         return new Tetromino(this.toString(this.returnRotatedShape("right")))
     }
 
     rotateLeft(){
+        if(this.objectArray.includes("I")){ return new Tetromino(rotateISHAPE()) }
         return new Tetromino(this.toString(this.returnRotatedShape("left")))       
     }   
     
