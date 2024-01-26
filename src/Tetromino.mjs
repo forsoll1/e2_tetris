@@ -37,4 +37,16 @@ export class Tetromino{
         }
         return newArray
     }
+
+    toString(arr){
+        let array1 = []
+        if (arr){array1 = arr}
+        else{array1 = this.objectArray}
+        let shapeLines = [] 
+        for (let line of array1) {
+          let newLine = line.join('') + "\n"
+          shapeLines.push(newLine)
+        }
+        return shapeLines.join('')
+    }    
 }
