@@ -17,12 +17,12 @@ export class Tetromino{
    }
 
    rotateRight(){
-        if(this.objectArray.includes("I")){ return new Tetromino(rotateISHAPE()) }
+        if(this.objectArray.length === 5){ return new Tetromino(this.rotateISHAPE()) }
         return new Tetromino(this.toString(this.returnRotatedShape("right")))
     }
 
     rotateLeft(){
-        if(this.objectArray.includes("I")){ return new Tetromino(rotateISHAPE()) }
+        if(this.objectArray.length === 5){ return new Tetromino(this.rotateISHAPE()) }
         return new Tetromino(this.toString(this.returnRotatedShape("left")))       
     }   
     
@@ -36,6 +36,13 @@ export class Tetromino{
             }
         }
         return newArray
+    }
+
+    rotateISHAPE(){
+        let Ia = ".....\n.....\nIIII.\n.....\n.....\n"
+        let Ib = "..I..\n..I..\n..I..\n..I..\n.....\n"
+        if (this.toString() === Ia){ return Ib}
+        return Ia
     }
 
     toString(arr){
