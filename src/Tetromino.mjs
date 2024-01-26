@@ -4,6 +4,7 @@ export class Tetromino{
    static O_SHAPE = new Tetromino(".OO\n.OO\n...")
 
    objectArray;
+   shapeChar;
 
    constructor(shape){
        this.objectArray = []
@@ -11,19 +12,21 @@ export class Tetromino{
        for (let line = 0; line < shapeAsArray.length; line++) {
            let row = []
            for (let char = 0; char < shapeAsArray[line].length; char++) {
-               row.push(shapeAsArray[line][char])
+                let newChar = shapeAsArray[line][char]
+                row.push(newChar)
+                if(!shapeChar && newChar != ".") { shapeChar = newChar}
            }
            this.objectArray.push(row)
        }
    }
 
    rotateRight(){
-        if(this.objectArray.length === 5){ return new Tetromino(this.rotateISHAPE()) }
+        if(this.shapeChar === "I"){ return new Tetromino(this.rotateISHAPE()) }
         return new Tetromino(this.toString(this.returnRotatedShape("right")))
     }
 
     rotateLeft(){
-        if(this.objectArray.length === 5){ return new Tetromino(this.rotateISHAPE()) }
+        if(this.shapeChar === "I"){ return new Tetromino(this.rotateISHAPE()) }
         return new Tetromino(this.toString(this.returnRotatedShape("left")))       
     }   
     
