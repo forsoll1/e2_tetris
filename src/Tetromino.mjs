@@ -1,8 +1,5 @@
- export class Tetromino{
-    T_SHAPE = new Tetromino(".T.\nTTT\n...")
+import {RotatingShape} from "./RotatingShape.mjs"
 
-    objectArray;
-
-    constructor(shape){
-    }
- }
+export class Tetromino{
+   static T_SHAPE = new RotatingShape(".T.\nTTT\n...")
+}
