@@ -21,11 +21,13 @@ export class Tetromino{
    }
 
    rotateRight(){
+        if(this.shapeChar === "O"){ return }
         if(this.shapeChar === "I"){ return new Tetromino(this.rotateISHAPE()) }
         return new Tetromino(this.toString(this.returnRotatedShape("right")))
     }
 
     rotateLeft(){
+        if(this.shapeChar === "O"){ return }
         if(this.shapeChar === "I"){ return new Tetromino(this.rotateISHAPE()) }
         return new Tetromino(this.toString(this.returnRotatedShape("left")))       
     }   
