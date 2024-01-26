@@ -1,6 +1,7 @@
 export class Tetromino{
    static T_SHAPE = new Tetromino(".T.\nTTT\n...")
    static I_SHAPE = new Tetromino(".....\n.....\nIIII.\n.....\n.....")
+   static O_SHAPE = new Tetromino(".OO\n.OO\n...")
 
    objectArray;
 
