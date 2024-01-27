@@ -23,7 +23,7 @@ export class Board {
   newDrop(shape){
     if(!this.falling){
       shapeArray = shapeToArray(shape)
-      let middle = Math.floor(this.width/2)
+      let shapeLeftEdge = Math.floor((this.width - shape.length)/2)
     }else{throw("already falling")}
   }
 
