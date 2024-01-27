@@ -22,8 +22,22 @@ export class Board {
 
   newDrop(shape){
     if(!this.falling){
+      shapeArray = shapeToArray(shape)
       let middle = Math.floor(this.width/2)
     }else{throw("already falling")}
+  }
+
+  shapeToArray(shape){
+    newArr = []
+    shape.replace(/\t| |\n$/g, '').split("\n")
+    for (let line = 0; line < shapeAsArray.length; line++) {
+        let row = []
+        for (let char = 0; char < shapeAsArray[line].length; char++) {
+            row.push(shapeAsArray[line][char])
+        }
+        newArr.push(row)
+    }
+    return newArr
   }
   
   drop(shape){
