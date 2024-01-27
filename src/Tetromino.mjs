@@ -13,21 +13,21 @@ export class Tetromino{
            let row = []
            for (let char = 0; char < shapeAsArray[line].length; char++) {
                 let newChar = shapeAsArray[line][char]
+                if(!this.shapeChar && newChar != "."){this.shapeChar = newChar}
                 row.push(newChar)
-                if(!shapeChar && newChar != ".") { shapeChar = newChar}
            }
            this.objectArray.push(row)
        }
    }
 
    rotateRight(){
-        if(this.shapeChar === "O"){ return }
+        if(this.shapeChar === "O"){ return this}
         if(this.shapeChar === "I"){ return new Tetromino(this.rotateISHAPE()) }
         return new Tetromino(this.toString(this.returnRotatedShape("right")))
     }
 
     rotateLeft(){
-        if(this.shapeChar === "O"){ return }
+        if(this.shapeChar === "O"){ return this}
         if(this.shapeChar === "I"){ return new Tetromino(this.rotateISHAPE()) }
         return new Tetromino(this.toString(this.returnRotatedShape("left")))       
     }   
