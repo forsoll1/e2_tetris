@@ -19,6 +19,12 @@ export class Board {
       this.board.push(Array(this.width).fill("."))
     }
   }
+
+  newDrop(shape){
+    if(!this.falling){
+      let middle = Math.floor(this.width/2)
+    }else{throw("already falling")}
+  }
   
   drop(shape){
     if (!this.falling){
