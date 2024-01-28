@@ -30,10 +30,11 @@ export class Board {
       let shapeLeftEdge = Math.floor((this.width - shapeArray.length)/2)
       for (let i = 0; i < shapeArray.length; i++) {
         for (let j = 0; j < shapeArray[i].length; j++) {
-          if (shapeArray[i][j] != ".") {this.activeBlockPos.push[this.board[i][shapeLeftEdge + j]]}
+          if (shapeArray[i][j] != ".") {this.activeBlockPos.push([i,(shapeLeftEdge + j)])}
           this.board[i][shapeLeftEdge + j] = shapeArray[i][j]
         }
       }
+      this.falling = true
     }else{throw("already falling")}
   }
   
@@ -56,6 +57,10 @@ export class Board {
     this.activeBlockPos[0] += 1
     this.board[posY+1][posX] = this.board[posY][posX]
     this.board[posY][posX] = "."
+  }
+
+  checkIfHitBottom(arr){
+    
   }
 
   hasFalling(){
