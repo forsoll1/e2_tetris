@@ -5,10 +5,13 @@ export class Board {
   falling;
   activeBlockPos;
 
+  testBoard;
+
   constructor(width, height) {
     this.width = width;
     this.height = height;
     this.board = new Array();
+    this.testBoard = new Array();
     this.falling = false
     this.activeBlockPos = []
     this.initBoard()
@@ -17,24 +20,26 @@ export class Board {
   initBoard(){
     for (let index = 0; index < this.height; index++) {
       this.board.push(Array(this.width).fill("."))
+      this.testBoard.push(Array(this.width).fill("."))
     }
   }
 
   newDrop(shape){
     if(!this.falling){
-      shapeArray = shapeToArray(shape)
+      let shapeArray = this.shapeToArray(shape)
       let shapeLeftEdge = Math.floor((this.width - shape.length)/2)
       for (let i = 0; i < shapeArray.length; i++) {
         for (let j = 0; j < shapeArray[i].length; j++) {
-          this.board[i][shapeLeftEdge + j] = shapeArray[i][j]
+          this.testBoard[i][shapeLeftEdge + j] = shapeArray[i][j]
         }
       }
+      console.log(this.testBoard)
     }else{throw("already falling")}
   }
 
   shapeToArray(shape){
-    newArr = []
-    shape.replace(/\t| |\n$/g, '').split("\n")
+    let newArr = []
+    let shapeAsArray = shape.replace(/\t| |\n$/g, '').split("\n")
     for (let line = 0; line < shapeAsArray.length; line++) {
         let row = []
         for (let char = 0; char < shapeAsArray[line].length; char++) {
@@ -47,6 +52,7 @@ export class Board {
   
   drop(shape){
     if (!this.falling){
+      this.newDrop(shape)
       let middle = Math.floor(this.width/2)
       this.board[0][middle] = shape
       this.activeBlockPos = [0,middle]
