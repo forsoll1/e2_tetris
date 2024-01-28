@@ -4,6 +4,7 @@ export class Board {
   board;
   falling;
   activeBlockPos;
+  activeChar;
 
   constructor(width, height) {
     this.width = width;
@@ -25,8 +26,8 @@ export class Board {
   newDrop(shape){
     if(!this.falling){
       let shapeArray;
-      if (shape.objectArray){shapeArray = shape.objectArray}
-      else{shapeArray = [shape]}
+      if (shape.objectArray){shapeArray = shape.objectArray; this.activeChar = shape.shapeChar}
+      else{shapeArray = [shape]; this.activeChar = shape}
       let shapeLeftEdge = Math.floor((this.width - shapeArray.length)/2)
       for (let i = 0; i < shapeArray.length; i++) {
         for (let j = 0; j < shapeArray[i].length; j++) {
@@ -51,7 +52,7 @@ export class Board {
   tick(){    
     let posX = this.activeBlockPos[1];
     let posY = this.activeBlockPos[0];
-    
+
     if (posY + 1 === this.height){this.falling = false; return}
     if (this.board[posY+1][posX] != "."){this.falling = false; return}
     this.activeBlockPos[0] += 1
@@ -61,6 +62,10 @@ export class Board {
 
   newTick(){
     if (this.checkIfHitBottomOrOtherBlocks(this.activeBlockPos)){this.falling = false; return}
+    for (let i = 0; i < this.activeBlockPos.length; i++) {
+      this.board[this.activeBlockPos[i][0]][this.activeBlockPos[i][1]] = "."
+      this.activeBlockPos[i][0] += 1
+    }
   }
 
   checkIfHitBottomOrOtherBlocks(arr){
