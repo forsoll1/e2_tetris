@@ -43,7 +43,7 @@ export class Board {
       this.newDrop(shape)
       let middle = Math.floor(this.width/2)
       this.board[0][middle] = shape
-      this.activeBlockPos.push([0,middle])
+      this.activeBlockPos = [0,middle]
       this.falling = true
     }else{throw("already falling")}
   }
@@ -51,12 +51,16 @@ export class Board {
   tick(){    
     let posX = this.activeBlockPos[1];
     let posY = this.activeBlockPos[0];
-
+    
     if (posY + 1 === this.height){this.falling = false; return}
     if (this.board[posY+1][posX] != "."){this.falling = false; return}
     this.activeBlockPos[0] += 1
     this.board[posY+1][posX] = this.board[posY][posX]
     this.board[posY][posX] = "."
+  }
+
+  newTick(){
+    if (this.checkIfHitBottomOrOtherBlocks(this.activeBlockPos)){this.falling = false; return}
   }
 
   checkIfHitBottomOrOtherBlocks(arr){
