@@ -24,6 +24,11 @@ export class Board {
     if(!this.falling){
       shapeArray = shapeToArray(shape)
       let shapeLeftEdge = Math.floor((this.width - shape.length)/2)
+      for (let i = 0; i < shapeArray.length; i++) {
+        for (let j = 0; j < shapeArray[i].length; j++) {
+          this.board[i][shapeLeftEdge + j] = shapeArray[i][j]
+        }
+      }
     }else{throw("already falling")}
   }
 
