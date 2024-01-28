@@ -50,16 +50,7 @@ export class Board {
     }else{throw("already falling")}
   }
 
-  OldTick(){    
-    let posX = this.activeBlockPos[1];
-    let posY = this.activeBlockPos[0];
 
-    if (posY + 1 === this.height){this.falling = false; return}
-    if (this.board[posY+1][posX] != "."){this.falling = false; return}
-    this.activeBlockPos[0] += 1
-    this.board[posY+1][posX] = this.board[posY][posX]
-    this.board[posY][posX] = "."
-  }
 
   tick(){
     if (this.checkIfHitBottomOrOtherBlocks(this.activeBlockPos)){this.falling = false; return}
