@@ -39,10 +39,6 @@ export class Board {
       this.falling = true
     }else{throw("already falling")}
   }
-  
-
-
-
 
   tick(){
     if (this.checkIfHitBottomOrOtherBlocks(this.activeBlockPos)){this.falling = false; return}
@@ -60,7 +56,16 @@ export class Board {
       let yPos = arr[i][0]
       let xPos = arr[i][1]
       if(yPos + 1 === this.height){return true}
-      if(this.board[yPos+1][xPos] != "." && !arr.includes([(yPos +1), xPos])) {return true}
+      if(this.board[yPos+1][xPos] != "." && !this.arrayIncludesPoint(arr, [(yPos+1),xPos])) {return true}
+      return false
+    }
+  }
+
+  arrayIncludesPoint(arr, point){
+    for (let i = 0; i < arr.length; i++) {
+      if(arr[0][0] === point[0] && arr[0][1] === point[1]){
+        return true
+      }return false
     }
   }
 
