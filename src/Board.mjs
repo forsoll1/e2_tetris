@@ -40,15 +40,7 @@ export class Board {
     }else{throw("already falling")}
   }
   
-  oldDrop(shape){
-    if (!this.falling){
-      this.newDrop(shape)
-      let middle = Math.floor(this.width/2)
-      this.board[0][middle] = shape
-      this.activeBlockPos = [0,middle]
-      this.falling = true
-    }else{throw("already falling")}
-  }
+
 
 
 
