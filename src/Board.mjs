@@ -43,7 +43,7 @@ export class Board {
       this.newDrop(shape)
       let middle = Math.floor(this.width/2)
       this.board[0][middle] = shape
-      this.activeBlockPos = [0,middle]
+      this.activeBlockPos.push([0,middle])
       this.falling = true
     }else{throw("already falling")}
   }
@@ -59,8 +59,14 @@ export class Board {
     this.board[posY][posX] = "."
   }
 
-  checkIfHitBottom(arr){
-    
+  checkIfHitBottomOrOtherBlocks(arr){
+    console.log('ACTIVE ARR: ', arr)
+    for (let i = 0; i < arr.length; i++) {
+      let yPos = arr[i][0]
+      let xPos = arr[i][1]
+      if(yPos + 1 === this.height){return true}
+      if(this.board[yPos+1][xPos] != "." && !this.arr.includes([(yPos +1), xPos])) {return true}
+    }
   }
 
   hasFalling(){
