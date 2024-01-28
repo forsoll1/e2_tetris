@@ -26,28 +26,22 @@ export class Board {
 
   newDrop(shape){
     if(!this.falling){
-      let shapeArray = this.shapeToArray(shape)
-      let shapeLeftEdge = Math.floor((this.width - shape.length)/2)
+      let shapeArray;
+      if (shape.objectArray){shapeArray = shape.objectArray}
+      else{shapeArray = [shape]}
+      let shapeLeftEdge = Math.floor((this.width - shapeArray.length)/2)
       for (let i = 0; i < shapeArray.length; i++) {
         for (let j = 0; j < shapeArray[i].length; j++) {
           this.testBoard[i][shapeLeftEdge + j] = shapeArray[i][j]
         }
       }
-      console.log(this.testBoard)
     }else{throw("already falling")}
   }
 
   shapeToArray(shape){
     let newArr = []
     let shapeAsArray = shape.replace(/\t| |\n$/g, '').split("\n")
-    for (let line = 0; line < shapeAsArray.length; line++) {
-        let row = []
-        for (let char = 0; char < shapeAsArray[line].length; char++) {
-            row.push(shapeAsArray[line][char])
-        }
-        newArr.push(row)
-    }
-    return newArr
+
   }
   
   drop(shape){
