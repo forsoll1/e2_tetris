@@ -23,8 +23,9 @@ export class Board {
     }
   }
 
-  newDrop(shape){
+  drop(shape){
     if(!this.falling){
+      this.activeBlockPos = []
       let shapeArray;
       if (shape.objectArray){shapeArray = shape.objectArray; this.activeChar = shape.shapeChar}
       else{shapeArray = [shape]; this.activeChar = shape}
@@ -39,7 +40,7 @@ export class Board {
     }else{throw("already falling")}
   }
   
-  drop(shape){
+  oldDrop(shape){
     if (!this.falling){
       this.newDrop(shape)
       let middle = Math.floor(this.width/2)
@@ -49,7 +50,7 @@ export class Board {
     }else{throw("already falling")}
   }
 
-  tick(){    
+  OldTick(){    
     let posX = this.activeBlockPos[1];
     let posY = this.activeBlockPos[0];
 
@@ -60,21 +61,23 @@ export class Board {
     this.board[posY][posX] = "."
   }
 
-  newTick(){
+  tick(){
     if (this.checkIfHitBottomOrOtherBlocks(this.activeBlockPos)){this.falling = false; return}
     for (let i = 0; i < this.activeBlockPos.length; i++) {
       this.board[this.activeBlockPos[i][0]][this.activeBlockPos[i][1]] = "."
       this.activeBlockPos[i][0] += 1
     }
+    for (let i = 0; i < this.activeBlockPos.length; i++) {
+      this.board[this.activeBlockPos[i][0]][this.activeBlockPos[i][1]] = this.activeChar
+    }
   }
 
   checkIfHitBottomOrOtherBlocks(arr){
-    console.log('ACTIVE ARR: ', arr)
     for (let i = 0; i < arr.length; i++) {
       let yPos = arr[i][0]
       let xPos = arr[i][1]
       if(yPos + 1 === this.height){return true}
-      if(this.board[yPos+1][xPos] != "." && !this.arr.includes([(yPos +1), xPos])) {return true}
+      if(this.board[yPos+1][xPos] != "." && !arr.includes([(yPos +1), xPos])) {return true}
     }
   }
 
