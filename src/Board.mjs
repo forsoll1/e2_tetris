@@ -66,7 +66,11 @@ export class Board {
     if(direction === "left") {xVal = -1}
     for (let i = 0; i < this.activeBlockPos.length; i++) {
       this.board[this.activeBlockPos[i][0]][this.activeBlockPos[i][1]] = "."
-      this.activeBlockPos[i][0] += 1
+      this.activeBlockPos[i][0] += yVal
+      this.activeBlockPos[i][1] += xVal
+    }
+    for (let i = 0; i < this.activeBlockPos.length; i++) {
+      this.board[this.activeBlockPos[i][0]][this.activeBlockPos[i][1]] = this.activeChar
     }    
   }
 
