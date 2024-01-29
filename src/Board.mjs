@@ -69,9 +69,17 @@ export class Board {
   }
 
   moveLeft(){
-    if(this.falling){
+    if(this.falling && this.canMoveLeft()){
       this.updateBoard("left")
     }
+  }
+
+  canMoveLeft(){
+    for (let i = 0; i < this.activeBlockPos.length; i++) {
+      if(this.activeBlockPos[i][1]-1 < 0){
+        return false
+      }
+    }return true
   }
 
   checkIfHitBottomOrOtherBlocks(arr){
