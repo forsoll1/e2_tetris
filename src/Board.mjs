@@ -76,13 +76,7 @@ export class Board {
 
   moveLeft(){
     if(this.falling){
-      for (let i = 0; i < this.activeBlockPos.length; i++) {
-        this.board[this.activeBlockPos[i][0]][this.activeBlockPos[i][1]] = "."
-        this.activeBlockPos[i][1] -= 1
-      }
-      for (let i = 0; i < this.activeBlockPos.length; i++) {
-        this.board[this.activeBlockPos[i][0]][this.activeBlockPos[i][1]] = this.activeChar
-      }      
+      this.updateBoard("left")
     }
   }
 
