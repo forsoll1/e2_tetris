@@ -62,9 +62,7 @@ export class Board {
   moveLeft(){
     if(this.falling){
       for (let i = 0; i < this.activeBlockPos.length; i++) {
-        if (this.activeBlockPos[i][1] - 1 < 0){
-          return
-        }
+        this.activeBlockPos[i][1] -= 1
       }
     }
   }
