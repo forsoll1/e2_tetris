@@ -50,13 +50,7 @@ export class Board {
 
   tick(){
     if (this.checkIfHitBottomOrOtherBlocks(this.activeBlockPos)){this.falling = false; return}
-    for (let i = 0; i < this.activeBlockPos.length; i++) {
-      this.board[this.activeBlockPos[i][0]][this.activeBlockPos[i][1]] = "."
-      this.activeBlockPos[i][0] += 1
-    }
-    for (let i = 0; i < this.activeBlockPos.length; i++) {
-      this.board[this.activeBlockPos[i][0]][this.activeBlockPos[i][1]] = this.activeChar
-    }
+      this.updateBoard("down")
   }
 
   updateBoard(direction){
