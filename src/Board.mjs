@@ -59,6 +59,17 @@ export class Board {
     }
   }
 
+  updateBoard(direction){
+    let yVal = 0
+    let xVal = 0
+    if(direction === "down") {yVal = 1}
+    if(direction === "left") {xVal = -1}
+    for (let i = 0; i < this.activeBlockPos.length; i++) {
+      this.board[this.activeBlockPos[i][0]][this.activeBlockPos[i][1]] = "."
+      this.activeBlockPos[i][0] += 1
+    }    
+  }
+
   moveLeft(){
     if(this.falling){
       for (let i = 0; i < this.activeBlockPos.length; i++) {
