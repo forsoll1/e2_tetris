@@ -1,4 +1,5 @@
 import { cloneDeep } from "lodash";
+import { Tetromino } from "./Tetromino.mjs";
 
 export class Board {
   width;
@@ -7,6 +8,7 @@ export class Board {
   falling;
   activeBlockPos;
   activeChar;
+  activeObj;
 
   constructor(width, height) {
     this.width = width;
@@ -29,8 +31,11 @@ export class Board {
     if(!this.falling){
       this.activeBlockPos = []
       let shapeArray;
+      console.log("TEST: ",shape, shape instanceof Tetromino)
+      shape = shape instanceof Tetromino? shape : new Tetromino(shape)
+      console.log("TEST: ",shape, shape instanceof Tetromino)
       if (shape.objectArray){shapeArray = shape.objectArray; this.activeChar = shape.shapeChar}
-      else{shapeArray = [shape]; this.activeChar = shape}
+      //else{shapeArray = [shape]; this.activeChar = shape}
       let shapeLeftEdge = Math.floor((this.width - shapeArray.length)/2)
       for (let i = 0; i < shapeArray.length; i++) {
         for (let j = 0; j < shapeArray[i].length; j++) {
@@ -56,7 +61,6 @@ export class Board {
   checkIfHitBottomOrOtherBlocks(arr){
     for (let i = 0; i < arr.length; i++) {
       let yPos = arr[i][0]
-      let xPos = arr[i][1]
       if(yPos + 1 === this.height){return true}
     }
     for (let i = 0; i < arr.length; i++){
