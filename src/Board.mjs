@@ -30,12 +30,10 @@ export class Board {
   drop(shape){
     if(!this.falling){
       this.activeBlockPos = []
-      let shapeArray;
       shape = shape instanceof Tetromino? shape : new Tetromino(shape)
       this.activeObj = shape
-      shapeArray = shape.objectArray 
       this.activeChar = shape.shapeChar
-      this.activeBlocksToArray(shapeArray)
+      this.activeBlocksToArray(shape.objectArray)
       this.falling = true
     }else{throw("already falling")}
   }
@@ -47,7 +45,7 @@ export class Board {
         if (shapeArray[i][j] != ".") {this.activeBlockPos.push([i,(shapeLeftEdge + j)])}
         this.board[i][shapeLeftEdge + j] = shapeArray[i][j]
       }
-    }    
+    }
   }
 
   tick(){
