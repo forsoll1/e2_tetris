@@ -31,20 +31,23 @@ export class Board {
     if(!this.falling){
       this.activeBlockPos = []
       let shapeArray;
-      console.log("TEST: ",shape, shape instanceof Tetromino)
       shape = shape instanceof Tetromino? shape : new Tetromino(shape)
-      console.log("TEST: ",shape, shape instanceof Tetromino)
-      if (shape.objectArray){shapeArray = shape.objectArray; this.activeChar = shape.shapeChar}
-      //else{shapeArray = [shape]; this.activeChar = shape}
-      let shapeLeftEdge = Math.floor((this.width - shapeArray.length)/2)
-      for (let i = 0; i < shapeArray.length; i++) {
-        for (let j = 0; j < shapeArray[i].length; j++) {
-          if (shapeArray[i][j] != ".") {this.activeBlockPos.push([i,(shapeLeftEdge + j)])}
-          this.board[i][shapeLeftEdge + j] = shapeArray[i][j]
-        }
-      }
+      this.activeObj = shape
+      shapeArray = shape.objectArray 
+      this.activeChar = shape.shapeChar
+      this.activeBlocksToArray(shapeArray)
       this.falling = true
     }else{throw("already falling")}
+  }
+
+  activeBlocksToArray(shapeArray){
+    let shapeLeftEdge = Math.floor((this.width - shapeArray.length)/2)
+    for (let i = 0; i < shapeArray.length; i++) {
+      for (let j = 0; j < shapeArray[i].length; j++) {
+        if (shapeArray[i][j] != ".") {this.activeBlockPos.push([i,(shapeLeftEdge + j)])}
+        this.board[i][shapeLeftEdge + j] = shapeArray[i][j]
+      }
+    }    
   }
 
   tick(){
