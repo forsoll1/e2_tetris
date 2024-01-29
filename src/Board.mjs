@@ -74,6 +74,13 @@ export class Board {
     }
   }
 
+  canMoveToDirection(direction){
+    let yVal = 0
+    let xVal = 0
+    if(direction === "down") {yVal = 1}
+    if(direction === "left") {xVal = -1}
+  }
+
   canMoveLeft(){
     for (let i = 0; i < this.activeBlockPos.length; i++) {
       let yPos = this.activeBlockPos[i][0]
