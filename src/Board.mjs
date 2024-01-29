@@ -76,7 +76,9 @@ export class Board {
 
   canMoveLeft(){
     for (let i = 0; i < this.activeBlockPos.length; i++) {
-      if(this.activeBlockPos[i][1]-1 < 0){
+      let yPos = this.activeBlockPos[i][0]
+      let xPos = this.activeBlockPos[i][1]      
+      if(xPos -1 < 0 || this.board[yPos][xPos -1] != "." && !this.arrayIncludesPoint(this.activeBlockPos, [yPos,(xPos -1)])){
         return false
       }
     }return true
