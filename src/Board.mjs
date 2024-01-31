@@ -17,7 +17,6 @@ export class Board {
     this.board = new Array();
     this.testBoard = new Array();
     this.falling = false
-    this.activeBlockPos = []
     this.newActiveBlockPos = []
     this.initBoard()
   }
@@ -31,7 +30,6 @@ export class Board {
 
   drop(shape){
     if(!this.falling){
-      this.activeBlockPos = []
       this.newActiveBlockPos = []
       shape = shape instanceof Tetromino? shape : new Tetromino(shape)
       this.activeObj = shape
@@ -46,7 +44,6 @@ export class Board {
     for (let i = 0; i < shapeArray.length; i++) {
       for (let j = 0; j < shapeArray[i].length; j++) {
         this.newActiveBlockPos.push([i,(shapeLeftEdge + j)])
-        if (shapeArray[i][j] != ".") {this.activeBlockPos.push([i,(shapeLeftEdge + j)])}
         this.board[i][shapeLeftEdge + j] = shapeArray[i][j]
       }
     }
@@ -72,7 +69,8 @@ export class Board {
       this.board[tetrominoPointsWithBlock[i][0]][tetrominoPointsWithBlock[i][1]] = "." }
     for (let i = 0; i < this.newActiveBlockPos.length; i++) {
       this.newActiveBlockPos[i][0] += yVal
-      this.newActiveBlockPos[i][1] += xVal }
+      this.newActiveBlockPos[i][1] += xVal 
+    }
     tetrominoPointsWithBlock = this.getActiveTetrominoBlockPoints(this.activeObj.objectArray)
     for (let i = 0; i < tetrominoPointsWithBlock.length; i++) {
       this.board[tetrominoPointsWithBlock[i][0]][tetrominoPointsWithBlock[i][1]] = this.activeChar}  
@@ -97,9 +95,6 @@ export class Board {
     if(direction === "down") {yVal = 1}
     if(direction === "left") {xVal = -1}
     if(direction === "right") {xVal = 1}
-    /*
-
-    */
     for (let i = 0; i < tetrominoPointsWithBlock.length; i++) {
       let yPos = tetrominoPointsWithBlock[i][0]
       let xPos = tetrominoPointsWithBlock[i][1]
@@ -108,7 +103,9 @@ export class Board {
       if(yPos + yVal === this.height){return false}
       if(this.board[yPos + yVal][xPos + xVal] != "." && !this.arrayIncludesPoint(tetrominoPointsWithBlock, [(yPos + yVal),(xPos + xVal)])){
         return false
-      }}return true
+      }
+    }
+    return true
   }
 
   getActiveTetrominoBlockPoints(tetromino){
