@@ -66,16 +66,7 @@ export class Board {
     if(direction === "down") {yVal = 1}
     if(direction === "left") {xVal = -1}
     if(direction === "right") {xVal = 1}
-    /*
-    for (let i = 0; i < this.activeBlockPos.length; i++) {
-      this.board[this.activeBlockPos[i][0]][this.activeBlockPos[i][1]] = "."
-      this.activeBlockPos[i][0] += yVal
-      this.activeBlockPos[i][1] += xVal
-    }
-    for (let i = 0; i < this.activeBlockPos.length; i++) {
-      this.board[this.activeBlockPos[i][0]][this.activeBlockPos[i][1]] = this.activeChar
-    }
-    */
+
     let tetrominoPointsWithBlock = this.getActiveTetrominoBlockPoints(this.activeObj.objectArray)
     for (let i = 0; i < tetrominoPointsWithBlock.length; i++) {
       this.board[tetrominoPointsWithBlock[i][0]][tetrominoPointsWithBlock[i][1]] = "." }
