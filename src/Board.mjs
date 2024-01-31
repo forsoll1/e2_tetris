@@ -61,6 +61,7 @@ export class Board {
     let xVal = 0
     if(direction === "down") {yVal = 1}
     if(direction === "left") {xVal = -1}
+    if(direction === "right") {xVal = 1}
     for (let i = 0; i < this.activeBlockPos.length; i++) {
       this.board[this.activeBlockPos[i][0]][this.activeBlockPos[i][1]] = "."
       this.activeBlockPos[i][0] += yVal
@@ -74,6 +75,12 @@ export class Board {
   moveLeft(){
     if(this.falling && this.canMoveToDirection("left")){
       this.updateBoard("left")
+    }
+  }
+
+  moveRight(){
+    if(this.falling){
+      this.updateBoard("right")
     }
   }
 
@@ -101,9 +108,6 @@ export class Board {
         return false
       }
     }return true
-  }
-
-  checkIfHitBottomOrOtherBlocks(arr){
   }
 
   arrayIncludesPoint(arr, point){
