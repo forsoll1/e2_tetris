@@ -49,8 +49,11 @@ export class Board {
   }
 
   tick(){
-    if (this.checkIfHitBottomOrOtherBlocks(this.activeBlockPos)){this.falling = false; return}
+    if(this.falling && this.canMoveToDirection("down")){
       this.updateBoard("down")
+    }else{
+      this.falling = false
+    }
   }
 
   updateBoard(direction){
