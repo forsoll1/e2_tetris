@@ -107,16 +107,7 @@ export class Board {
     if(direction === "left") {xVal = -1}
     if(direction === "right") {xVal = 1}
     /*
-    for (let i = 0; i < this.activeBlockPos.length; i++) {
-      let yPos = this.activeBlockPos[i][0]
-      let xPos = this.activeBlockPos[i][1]
-      if(xPos + xVal < 0){return false}
-      if(xPos + xVal === this.width){return false}
-      if(yPos + yVal === this.height){return false}
-      if(this.board[yPos + yVal][xPos + xVal] != "." && !this.arrayIncludesPoint(this.activeBlockPos, [(yPos + yVal),(xPos + xVal)])){
-        return false
-      }
-    }return true
+
     */
     for (let i = 0; i < tetrominoPointsWithBlock.length; i++) {
       let yPos = tetrominoPointsWithBlock[i][0]
