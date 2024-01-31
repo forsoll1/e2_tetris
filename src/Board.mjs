@@ -6,10 +6,9 @@ export class Board {
   height;
   board;
   falling;
-  activeBlockPos;
   activeChar;
   activeObj;
-  newActiveBlockPos;
+  activeBlockPos;
 
   constructor(width, height) {
     this.width = width;
@@ -17,7 +16,7 @@ export class Board {
     this.board = new Array();
     this.testBoard = new Array();
     this.falling = false
-    this.newActiveBlockPos = []
+    this.activeBlockPos = []
     this.initBoard()
   }
 
@@ -30,7 +29,7 @@ export class Board {
 
   drop(shape){
     if(!this.falling){
-      this.newActiveBlockPos = []
+      this.activeBlockPos = []
       shape = shape instanceof Tetromino? shape : new Tetromino(shape)
       this.activeObj = shape
       this.activeChar = shape.shapeChar
@@ -43,7 +42,7 @@ export class Board {
     let shapeLeftEdge = Math.floor((this.width - shapeArray.length)/2)
     for (let i = 0; i < shapeArray.length; i++) {
       for (let j = 0; j < shapeArray[i].length; j++) {
-        this.newActiveBlockPos.push([i,(shapeLeftEdge + j)])
+        this.activeBlockPos.push([i,(shapeLeftEdge + j)])
         this.board[i][shapeLeftEdge + j] = shapeArray[i][j]
       }
     }
@@ -67,9 +66,9 @@ export class Board {
     let tetrominoPointsWithBlock = this.getActiveTetrominoBlockPoints(this.activeObj.objectArray)
     for (let i = 0; i < tetrominoPointsWithBlock.length; i++) {
       this.board[tetrominoPointsWithBlock[i][0]][tetrominoPointsWithBlock[i][1]] = "." }
-    for (let i = 0; i < this.newActiveBlockPos.length; i++) {
-      this.newActiveBlockPos[i][0] += yVal
-      this.newActiveBlockPos[i][1] += xVal 
+    for (let i = 0; i < this.activeBlockPos.length; i++) {
+      this.activeBlockPos[i][0] += yVal
+      this.activeBlockPos[i][1] += xVal 
     }
     tetrominoPointsWithBlock = this.getActiveTetrominoBlockPoints(this.activeObj.objectArray)
     for (let i = 0; i < tetrominoPointsWithBlock.length; i++) {
@@ -111,8 +110,8 @@ export class Board {
   getActiveTetrominoBlockPoints(tetromino){
     let tetrominoPointsWithBlock = []
     let flattenTetromino = this.activeObj.objectArray.flat()
-    for (let i = 0; i < this.newActiveBlockPos.length; i++) {
-      if(flattenTetromino[i] != "."){tetrominoPointsWithBlock.push(this.newActiveBlockPos[i])
+    for (let i = 0; i < this.activeBlockPos.length; i++) {
+      if(flattenTetromino[i] != "."){tetrominoPointsWithBlock.push(this.activeBlockPos[i])
       }
     }return  tetrominoPointsWithBlock
   }
