@@ -9,6 +9,7 @@ export class Board {
   activeBlockPos;
   activeChar;
   activeObj;
+  newActiveBlockPos;
 
   constructor(width, height) {
     this.width = width;
@@ -17,6 +18,7 @@ export class Board {
     this.testBoard = new Array();
     this.falling = false
     this.activeBlockPos = []
+    this.newActiveBlockPos = []
     this.initBoard()
   }
 
@@ -30,6 +32,7 @@ export class Board {
   drop(shape){
     if(!this.falling){
       this.activeBlockPos = []
+      this.newActiveBlockPos = []
       shape = shape instanceof Tetromino? shape : new Tetromino(shape)
       this.activeObj = shape
       this.activeChar = shape.shapeChar
@@ -42,6 +45,7 @@ export class Board {
     let shapeLeftEdge = Math.floor((this.width - shapeArray.length)/2)
     for (let i = 0; i < shapeArray.length; i++) {
       for (let j = 0; j < shapeArray[i].length; j++) {
+        this.newActiveBlockPos.push([i,(shapeLeftEdge + j)])
         if (shapeArray[i][j] != ".") {this.activeBlockPos.push([i,(shapeLeftEdge + j)])}
         this.board[i][shapeLeftEdge + j] = shapeArray[i][j]
       }
@@ -85,6 +89,12 @@ export class Board {
   }
 
   canMoveToDirection(direction){
+    let tetrominoPointsWithBlock = []
+    let flattenTetromino = this.activeObj.objectArray.flat()
+    for (let i = 0; i < this.newActiveBlockPos.length; i++) {
+      if(flattenTetromino[i] != "."){tetrominoPointsWithBlock.push(this.newActiveBlockPos[i])
+      }
+    }
     let yVal = 0
     let xVal = 0
     if(direction === "down") {yVal = 1}
