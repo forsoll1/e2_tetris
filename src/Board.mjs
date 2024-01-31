@@ -69,7 +69,7 @@ export class Board {
   }
 
   moveLeft(){
-    if(this.falling && this.canMoveLeft()){
+    if(this.falling && this.canMoveToDirection("left")){
       this.updateBoard("left")
     }
   }
@@ -79,6 +79,15 @@ export class Board {
     let xVal = 0
     if(direction === "down") {yVal = 1}
     if(direction === "left") {xVal = -1}
+    for (let i = 0; i < this.activeBlockPos.length; i++) {
+      let yPos = this.activeBlockPos[i][0]
+      let xPos = this.activeBlockPos[i][1]
+      if(xPos + xVal < 0){return false}
+      if(yPos + yVal === this.height){return false}
+      if(this.board[yPos + yVal][xPos + xVal] != "." && !this.arrayIncludesPoint(this.activeBlockPos, [(yPos + yVal),(xPos + xVal)])){
+        return false
+      }
+    }return true
   }
 
   canMoveLeft(){
