@@ -73,16 +73,7 @@ export class Board {
     }
     for (let i = 0; i < this.activeBlockPos.length; i++) {
       this.board[this.activeBlockPos[i][0]][this.activeBlockPos[i][1]] = this.activeChar
-    }
-    /*
-    let tetrominoPointsWithBlock = this.getActiveTetrominoBlockPoints(this.activeObj.objectArray)
-    for (let i = 0; i < tetrominoPointsWithBlock.length; i++) {
-      this.board[tetrominoPointsWithBlock[i][0]][tetrominoPointsWithBlock[i][1]] = "."
-    for (let i = 0; i < this.newActiveBlockPos.length; i++) {
-      this.newActiveBlockPos[i][0] += yVal
-      this.newActiveBlockPos[i][1] += xVal
-
-    */    
+    }   
   }
 
   moveLeft(){
@@ -114,6 +105,15 @@ export class Board {
         return false
       }
     }return true
+    for (let i = 0; i < tetrominoPointsWithBlock.length; i++) {
+      let yPos = tetrominoPointsWithBlock[i][0]
+      let xPos = tetrominoPointsWithBlock[i][1]
+      if(xPos + xVal < 0){return false}
+      if(xPos + xVal === this.width){return false}
+      if(yPos + yVal === this.height){return false}
+      if(this.board[yPos + yVal][xPos + xVal] != "." && !this.arrayIncludesPoint(tetrominoPointsWithBlock, [(yPos + yVal),(xPos + xVal)])){
+        return false
+      }}return true
   }
 
   getActiveTetrominoBlockPoints(tetromino){
