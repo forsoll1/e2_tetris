@@ -117,16 +117,6 @@ export class Board {
     }return  tetrominoPointsWithBlock
   }
 
-  canMoveLeft(){
-    for (let i = 0; i < this.activeBlockPos.length; i++) {
-      let yPos = this.activeBlockPos[i][0]
-      let xPos = this.activeBlockPos[i][1]      
-      if(xPos -1 < 0 || this.board[yPos][xPos -1] != "." && !this.arrayIncludesPoint(this.activeBlockPos, [yPos,(xPos -1)])){
-        return false
-      }
-    }return true
-  }
-
   arrayIncludesPoint(arr, point){
     for (let i = 0; i < arr.length; i++) {
       if(arr[i][0] === point[0] && arr[i][1] === point[1]){ return true }
