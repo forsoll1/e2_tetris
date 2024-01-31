@@ -104,16 +104,6 @@ export class Board {
   }
 
   checkIfHitBottomOrOtherBlocks(arr){
-    for (let i = 0; i < arr.length; i++) {
-      let yPos = arr[i][0]
-      if(yPos + 1 === this.height){return true}
-    }
-    for (let i = 0; i < arr.length; i++){
-      let yPos = arr[i][0]
-      let xPos = arr[i][1]
-      if(this.board[yPos+1][xPos] != "." && !this.arrayIncludesPoint(arr, [(yPos+1),xPos])) {return true}
-    }
-    return false
   }
 
   arrayIncludesPoint(arr, point){
