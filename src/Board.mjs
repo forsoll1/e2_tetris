@@ -73,7 +73,16 @@ export class Board {
     }
     for (let i = 0; i < this.activeBlockPos.length; i++) {
       this.board[this.activeBlockPos[i][0]][this.activeBlockPos[i][1]] = this.activeChar
-    }    
+    }
+    /*
+    let tetrominoPointsWithBlock = this.getActiveTetrominoBlockPoints(this.activeObj.objectArray)
+    for (let i = 0; i < tetrominoPointsWithBlock.length; i++) {
+      this.board[tetrominoPointsWithBlock[i][0]][tetrominoPointsWithBlock[i][1]] = "."
+    for (let i = 0; i < this.newActiveBlockPos.length; i++) {
+      this.newActiveBlockPos[i][0] += yVal
+      this.newActiveBlockPos[i][1] += xVal
+
+    */    
   }
 
   moveLeft(){
