@@ -89,12 +89,7 @@ export class Board {
   }
 
   canMoveToDirection(direction){
-    let tetrominoPointsWithBlock = []
-    let flattenTetromino = this.activeObj.objectArray.flat()
-    for (let i = 0; i < this.newActiveBlockPos.length; i++) {
-      if(flattenTetromino[i] != "."){tetrominoPointsWithBlock.push(this.newActiveBlockPos[i])
-      }
-    }
+    let tetrominoPointsWithBlock = this.getActiveTetrominoBlockPoints(this.activeObj.objectArray)
     let yVal = 0
     let xVal = 0
     if(direction === "down") {yVal = 1}
@@ -110,6 +105,15 @@ export class Board {
         return false
       }
     }return true
+  }
+
+  getActiveTetrominoBlockPoints(tetromino){
+    let tetrominoPointsWithBlock = []
+    let flattenTetromino = this.activeObj.objectArray.flat()
+    for (let i = 0; i < this.newActiveBlockPos.length; i++) {
+      if(flattenTetromino[i] != "."){tetrominoPointsWithBlock.push(this.newActiveBlockPos[i])
+      }
+    }return  tetrominoPointsWithBlock
   }
 
   canMoveLeft(){
