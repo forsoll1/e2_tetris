@@ -70,9 +70,9 @@ export class Board {
       this.activeBlockPos[i][0] += yVal
       this.activeBlockPos[i][1] += xVal 
     }
-    tetrominoPointsWithBlock = this.getActiveTetrominoBlockPoints(this.activeObj.objectArray)
-    for (let i = 0; i < tetrominoPointsWithBlock.length; i++) {
-      this.board[tetrominoPointsWithBlock[i][0]][tetrominoPointsWithBlock[i][1]] = this.activeChar}  
+    let updatedTetrominoPointsWithBlock = this.getActiveTetrominoBlockPoints(this.activeObj.objectArray)
+    for (let i = 0; i < updatedTetrominoPointsWithBlock.length; i++) {
+      this.board[updatedTetrominoPointsWithBlock[i][0]][updatedTetrominoPointsWithBlock[i][1]] = this.activeChar}  
   }
 
   moveLeft(){
