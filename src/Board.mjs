@@ -100,17 +100,6 @@ export class Board {
       shapeToBeTested.push(newPoint)
     }
     return this.canShapeFit(shapeToBeTested)
-    for (let i = 0; i < tetrominoPointsWithBlock.length; i++) {
-      let yPos = tetrominoPointsWithBlock[i][0]
-      let xPos = tetrominoPointsWithBlock[i][1]
-      if(xPos + xVal < 0){return false}
-      if(xPos + xVal === this.width){return false}
-      if(yPos + yVal === this.height){return false}
-      if(this.board[yPos + yVal][xPos + xVal] != "." && !this.arrayIncludesPoint(tetrominoPointsWithBlock, [(yPos + yVal),(xPos + xVal)])){
-        return false
-      }
-    }
-    return true
   }
 
   canShapeFit(shapeArray){
