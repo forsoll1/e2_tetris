@@ -94,6 +94,12 @@ export class Board {
     if(direction === "down") {yVal = 1}
     if(direction === "left") {xVal = -1}
     if(direction === "right") {xVal = 1}
+    /*
+    for (const point of tetrominoPointsWithBlock) {
+      point[0] += yVal
+      point[1] += xVal
+    }
+    */
     for (let i = 0; i < tetrominoPointsWithBlock.length; i++) {
       let yPos = tetrominoPointsWithBlock[i][0]
       let xPos = tetrominoPointsWithBlock[i][1]
@@ -107,7 +113,7 @@ export class Board {
     return true
   }
 
-  doesShapeCollide(shapeArray){
+  canShapeFit(shapeArray){
     for (let i = 0; i < shapeArray.length; i++) {
       let yPos = shapeArray[i][0]
       let xPos = shapeArray[i][1]
