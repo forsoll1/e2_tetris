@@ -63,9 +63,7 @@ export class Board {
     if(direction === "left") {xVal = -1}
     if(direction === "right") {xVal = 1}
 
-    let tetrominoPointsWithBlock = this.getActiveTetrominoBlockPoints(this.activeObj.objectArray)
-    for (let i = 0; i < tetrominoPointsWithBlock.length; i++) {
-      this.board[tetrominoPointsWithBlock[i][0]][tetrominoPointsWithBlock[i][1]] = "." }
+    this.deleteOldActivePointsFromBoard()
     for (let i = 0; i < this.activeBlockPos.length; i++) {
       this.activeBlockPos[i][0] += yVal
       this.activeBlockPos[i][1] += xVal 
@@ -102,17 +100,26 @@ export class Board {
   }
 
   handleRotationOnBoard(newTetromino){
-    console.log("BEFORE\n",this.toString())
-    let tetrominoPointsWithBlock = this.getActiveTetrominoBlockPoints(this.activeObj.objectArray)
-    for (let i = 0; i < tetrominoPointsWithBlock.length; i++) {
-      this.board[tetrominoPointsWithBlock[i][0]][tetrominoPointsWithBlock[i][1]] = "." 
-    }
+    this.deleteOldActivePointsFromBoard()
     this.activeObj = newTetromino
     let updatedTetrominoPointsWithBlock = this.getActiveTetrominoBlockPoints(this.activeObj.objectArray)
     for (let i = 0; i < updatedTetrominoPointsWithBlock.length; i++) {
       this.board[updatedTetrominoPointsWithBlock[i][0]][updatedTetrominoPointsWithBlock[i][1]] = this.activeChar
     }
-    console.log("AFTER\n",this.toString())
+  }
+
+  deleteOldActivePointsFromBoard(){
+    let tetrominoPointsWithBlock = this.getActiveTetrominoBlockPoints(this.activeObj.objectArray)
+    for (let i = 0; i < tetrominoPointsWithBlock.length; i++) {
+      this.board[tetrominoPointsWithBlock[i][0]][tetrominoPointsWithBlock[i][1]] = "." 
+    }    
+  }
+
+  updateNewActivePointsToBoard(){
+    let updatedTetrominoPointsWithBlock = this.getActiveTetrominoBlockPoints(this.activeObj.objectArray)
+    for (let i = 0; i < updatedTetrominoPointsWithBlock.length; i++) {
+      this.board[updatedTetrominoPointsWithBlock[i][0]][updatedTetrominoPointsWithBlock[i][1]] = this.activeChar
+    }
   }
 
   canMoveToDirection(direction){
