@@ -96,6 +96,10 @@ export class Board {
     let newActiveBlocks = this.getActiveTetrominoBlockPoints(this.activeObj.rotateLeft().objectArray)
     if (this.falling && this.canShapeFit(newActiveBlocks)){
       this.handleRotationOnBoard(this.activeObj.rotateLeft())
+    }else if (this.falling && this.canMoveToDirection(this.activeObj.rotateLeft().objectArray, "left")){
+      this.handleRotationOnBoard(this.activeObj.rotateLeft(), "left")
+    }else if (this.falling && this.canMoveToDirection(this.activeObj.rotateLeft().objectArray, "right")){
+      this.handleRotationOnBoard(this.activeObj.rotateLeft(), "right")
     }
   }
 
@@ -106,9 +110,12 @@ export class Board {
     }
   }
 
-  handleRotationOnBoard(newTetromino){
+  handleRotationOnBoard(newTetromino, kickDirection){
     this.deleteOldActivePointsFromBoard()
     this.activeObj = newTetromino
+    if(kickDirection){
+      this.activeBlockPos = this.moveActiveBlockPosToDirection(this.activeBlockPos, kickDirection)
+    }
     this.updateNewActivePointsToBoard()
   }
 
