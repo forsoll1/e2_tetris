@@ -88,6 +88,26 @@ describe("Falling rotating tetrominoes", () => {
     );
   });
 
+  test("Kick right when rotating next to left wall", () => {
+    board.drop(Tetromino.T_SHAPE);
+    board.rotateLeft()
+    board.moveRight()
+    board.moveRight()
+    board.moveRight()
+    board.moveRight()
+    board.moveRight()
+    board.rotateRight()
+
+    expect(board.toString()).to.equalShape(
+      `........T.
+       .......TTT
+       ..........
+       ..........
+       ..........
+       ..........`
+    );
+  });
+
 
 
   test.skip("TEST TEMPLATE", () => {
