@@ -85,14 +85,14 @@ export class Board {
 
   rotateLeft(){
     let newActiveBlocks = this.getActiveTetrominoBlockPoints(this.activeObj.rotateLeft().objectArray)
-    if (this.canShapeFit(newActiveBlocks)){
+    if (this.falling && this.canShapeFit(newActiveBlocks)){
       this.handleRotationOnBoard(this.activeObj.rotateLeft())
     }
   }
 
   rotateRight(){
     let newActiveBlocks = this.getActiveTetrominoBlockPoints(this.activeObj.rotateRight().objectArray)
-    if (this.canShapeFit(newActiveBlocks)){
+    if (this.falling && this.canShapeFit(newActiveBlocks)){
       this.handleRotationOnBoard(this.activeObj.rotateRight())
     }
   }
