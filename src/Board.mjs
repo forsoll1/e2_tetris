@@ -82,7 +82,16 @@ export class Board {
       this.updateBoard("right")
     }
   }
-
+  moveActiveBlockPosToDirection(shapeArray, direction){
+    let movedShapeArray = []
+    let yVal = 0
+    let xVal = 0
+    if(direction === "down") {yVal = 1}
+    if(direction === "left") {xVal = -1}
+    if(direction === "right") {xVal = 1}
+    for (const point of shapeArray) {
+      movedShapeArray.push([point[0] + yVal, point[1] + xVal])}
+    return movedShapeArray}
   rotateLeft(){
     let newActiveBlocks = this.getActiveTetrominoBlockPoints(this.activeObj.rotateLeft().objectArray)
     if (this.falling && this.canShapeFit(newActiveBlocks)){
