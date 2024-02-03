@@ -87,6 +87,10 @@ export class Board {
     }
   }
 
+  rotateLeft(){
+    
+  }
+
   canMoveToDirection(direction){
     let tetrominoPointsWithBlock = this.getActiveTetrominoBlockPoints(this.activeObj.objectArray)
     let yVal = 0
