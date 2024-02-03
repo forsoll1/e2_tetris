@@ -64,10 +64,13 @@ export class Board {
     if(direction === "right") {xVal = 1}
 
     this.deleteOldActivePointsFromBoard()
+    this.activeBlockPos = this.moveActiveBlockPosToDirection(this.activeBlockPos, direction)
+    /*
     for (let i = 0; i < this.activeBlockPos.length; i++) {
       this.activeBlockPos[i][0] += yVal
       this.activeBlockPos[i][1] += xVal 
     }
+    */
     this.updateNewActivePointsToBoard()
   }
 
@@ -90,8 +93,11 @@ export class Board {
     if(direction === "left") {xVal = -1}
     if(direction === "right") {xVal = 1}
     for (const point of shapeArray) {
-      movedShapeArray.push([point[0] + yVal, point[1] + xVal])}
-    return movedShapeArray}
+      movedShapeArray.push([point[0] + yVal, point[1] + xVal])
+    }
+    return movedShapeArray
+  }
+
   rotateLeft(){
     let newActiveBlocks = this.getActiveTetrominoBlockPoints(this.activeObj.rotateLeft().objectArray)
     if (this.falling && this.canShapeFit(newActiveBlocks)){
