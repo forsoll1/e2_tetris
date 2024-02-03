@@ -107,6 +107,20 @@ export class Board {
     return true
   }
 
+  doesShapeCollide(shapeArray){
+    for (let i = 0; i < shapeArray.length; i++) {
+      let yPos = shapeArray[i][0]
+      let xPos = shapeArray[i][1]
+      if(xPos + xVal < 0){return false}
+      if(xPos + xVal === this.width){return false}
+      if(yPos + yVal === this.height){return false}
+      if(this.board[yPos][xPos] != "." && !this.arrayIncludesPoint(shapeArray, [yPos, xPos])){
+        return false
+      }
+    }
+    return true
+  }
+
   getActiveTetrominoBlockPoints(tetromino){
     let tetrominoPointsWithBlock = []
     let flattenTetromino = this.activeObj.objectArray.flat()
