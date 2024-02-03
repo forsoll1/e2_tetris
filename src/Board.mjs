@@ -65,12 +65,6 @@ export class Board {
 
     this.deleteOldActivePointsFromBoard()
     this.activeBlockPos = this.moveActiveBlockPosToDirection(this.activeBlockPos, direction)
-    /*
-    for (let i = 0; i < this.activeBlockPos.length; i++) {
-      this.activeBlockPos[i][0] += yVal
-      this.activeBlockPos[i][1] += xVal 
-    }
-    */
     this.updateNewActivePointsToBoard()
   }
 
@@ -134,6 +128,7 @@ export class Board {
 
   canMoveToDirection(direction){
     let tetrominoPointsWithBlock = this.getActiveTetrominoBlockPoints(this.activeObj.objectArray)
+    //let shapeToBeTested = this.moveActiveBlockPosToDirection(this.getActiveTetrominoBlockPoints(this.activeObj.objectArray),direction)
     let yVal = 0
     let xVal = 0
     if(direction === "down") {yVal = 1}
