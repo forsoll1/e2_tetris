@@ -88,7 +88,20 @@ export class Board {
   }
 
   rotateLeft(){
-    
+    let newActiveBlocks = this.getActiveTetrominoBlockPoints(this.activeObj.rotateLeft().objectArray)
+    if (this.canShapeFit(newActiveBlocks)){
+      this.handleRotationOnBoard(this.activeObj.rotateLeft())
+    }
+  }
+
+  handleRotationOnBoard(newTetromino){
+    let tetrominoPointsWithBlock = this.getActiveTetrominoBlockPoints(this.activeObj.objectArray)
+    for (let i = 0; i < tetrominoPointsWithBlock.length; i++) {
+      this.board[tetrominoPointsWithBlock[i][0]][tetrominoPointsWithBlock[i][1]] = "." }
+    this.activeObj = newTetromino
+    let updatedTetrominoPointsWithBlock = this.getActiveTetrominoBlockPoints(this.activeObj.objectArray)
+    for (let i = 0; i < updatedTetrominoPointsWithBlock.length; i++) {
+      this.board[updatedTetrominoPointsWithBlock[i][0]][updatedTetrominoPointsWithBlock[i][1]] = this.activeChar}  
   }
 
   canMoveToDirection(direction){
