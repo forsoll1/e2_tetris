@@ -49,7 +49,7 @@ export class Board {
   }
 
   tick(){
-    if(this.falling && this.canMoveToDirection("down")){
+    if(this.falling && this.canMoveToDirection(this.activeObj.objectArray, "down")){
       this.updateBoard("down")
     }else{
       this.falling = false
@@ -69,13 +69,13 @@ export class Board {
   }
 
   moveLeft(){
-    if(this.falling && this.canMoveToDirection("left")){
+    if(this.falling && this.canMoveToDirection(this.activeObj.objectArray, "left")){
       this.updateBoard("left")
     }
   }
 
   moveRight(){
-    if(this.falling && this.canMoveToDirection("right")){
+    if(this.falling && this.canMoveToDirection(this.activeObj.objectArray, "right")){
       this.updateBoard("right")
     }
   }
@@ -126,11 +126,9 @@ export class Board {
     }
   }
 
-  canMoveToDirection(direction){
-    let shapeToBeTested = this.moveActiveBlockPosToDirection(this.getActiveTetrominoBlockPoints(this.activeObj.objectArray),direction)
+  canMoveToDirection(objectArray, direction){
+    let shapeToBeTested = this.moveActiveBlockPosToDirection(this.getActiveTetrominoBlockPoints(objectArray),direction)
     return this.canShapeFit(shapeToBeTested)
-    /*
-    return this.canShapeFit(shapeToBeTested)*/
   }
 
   canShapeFit(shapeArray){
