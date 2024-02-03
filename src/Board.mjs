@@ -129,6 +129,8 @@ export class Board {
   canMoveToDirection(direction){
     let shapeToBeTested = this.moveActiveBlockPosToDirection(this.getActiveTetrominoBlockPoints(this.activeObj.objectArray),direction)
     return this.canShapeFit(shapeToBeTested)
+    /*
+    return this.canShapeFit(shapeToBeTested)*/
   }
 
   canShapeFit(shapeArray){
