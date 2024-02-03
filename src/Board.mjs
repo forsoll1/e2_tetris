@@ -94,12 +94,12 @@ export class Board {
     if(direction === "down") {yVal = 1}
     if(direction === "left") {xVal = -1}
     if(direction === "right") {xVal = 1}
-    /*
-    for (const point of tetrominoPointsWithBlock) {
-      point[0] += yVal
-      point[1] += xVal
+    let shapeToBeTested = []
+    for (let point of tetrominoPointsWithBlock) {
+      let newPoint = [point[0] + yVal, point[1] + xVal]
+      shapeToBeTested.push(newPoint)
     }
-    */
+    return this.canShapeFit(shapeToBeTested)
     for (let i = 0; i < tetrominoPointsWithBlock.length; i++) {
       let yPos = tetrominoPointsWithBlock[i][0]
       let xPos = tetrominoPointsWithBlock[i][1]
@@ -117,10 +117,10 @@ export class Board {
     for (let i = 0; i < shapeArray.length; i++) {
       let yPos = shapeArray[i][0]
       let xPos = shapeArray[i][1]
-      if(xPos + xVal < 0){return false}
-      if(xPos + xVal === this.width){return false}
-      if(yPos + yVal === this.height){return false}
-      if(this.board[yPos][xPos] != "." && !this.arrayIncludesPoint(shapeArray, [yPos, xPos])){
+      if(xPos < 0){return false}
+      if(xPos === this.width){return false}
+      if(yPos === this.height){return false}
+      if(this.board[yPos][xPos] != "." && !this.arrayIncludesPoint(this.getActiveTetrominoBlockPoints(this.activeObj.objectArray), [yPos, xPos])){
         return false
       }
     }
