@@ -68,9 +68,7 @@ export class Board {
       this.activeBlockPos[i][0] += yVal
       this.activeBlockPos[i][1] += xVal 
     }
-    let updatedTetrominoPointsWithBlock = this.getActiveTetrominoBlockPoints(this.activeObj.objectArray)
-    for (let i = 0; i < updatedTetrominoPointsWithBlock.length; i++) {
-      this.board[updatedTetrominoPointsWithBlock[i][0]][updatedTetrominoPointsWithBlock[i][1]] = this.activeChar}  
+    this.updateNewActivePointsToBoard()
   }
 
   moveLeft(){
@@ -102,10 +100,7 @@ export class Board {
   handleRotationOnBoard(newTetromino){
     this.deleteOldActivePointsFromBoard()
     this.activeObj = newTetromino
-    let updatedTetrominoPointsWithBlock = this.getActiveTetrominoBlockPoints(this.activeObj.objectArray)
-    for (let i = 0; i < updatedTetrominoPointsWithBlock.length; i++) {
-      this.board[updatedTetrominoPointsWithBlock[i][0]][updatedTetrominoPointsWithBlock[i][1]] = this.activeChar
-    }
+    this.updateNewActivePointsToBoard()
   }
 
   deleteOldActivePointsFromBoard(){
@@ -138,8 +133,6 @@ export class Board {
   }
 
   canShapeFit(shapeArray){
-    console.log('shapearray', shapeArray)
-    console.log('board', this.board)
     for (let i = 0; i < shapeArray.length; i++) {
       let yPos = shapeArray[i][0]
       let xPos = shapeArray[i][1]
