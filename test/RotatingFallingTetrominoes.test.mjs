@@ -41,6 +41,33 @@ describe("Falling rotating tetrominoes", () => {
        ..........`
     );
   });
+    test("Tetromino can't rotate through blocks'", () => {
+    board.drop(Tetromino.T_SHAPE);
+    board.rotateRight()
+    board.moveRight()
+    fallToBottom(board)
+    board.drop(Tetromino.T_SHAPE)
+    board.rotateLeft()
+    board.moveLeft()
+    board.moveLeft()
+    fallToBottom(board)
+    board.drop(Tetromino.T_SHAPE)
+    board.rotateLeft()
+    board.tick()
+    board.tick()
+    board.tick()
+    board.rotateLeft()
+
+
+    expect(board.toString()).to.equalShape(
+      `..........
+       ..........
+       ..........
+       ..T.TT....
+       .TTTTTT...
+       ..T.TT....`
+    );
+  });
 
 
 

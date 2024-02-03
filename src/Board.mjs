@@ -102,13 +102,17 @@ export class Board {
   }
 
   handleRotationOnBoard(newTetromino){
+    console.log("BEFORE\n",this.toString())
     let tetrominoPointsWithBlock = this.getActiveTetrominoBlockPoints(this.activeObj.objectArray)
     for (let i = 0; i < tetrominoPointsWithBlock.length; i++) {
-      this.board[tetrominoPointsWithBlock[i][0]][tetrominoPointsWithBlock[i][1]] = "." }
+      this.board[tetrominoPointsWithBlock[i][0]][tetrominoPointsWithBlock[i][1]] = "." 
+    }
     this.activeObj = newTetromino
     let updatedTetrominoPointsWithBlock = this.getActiveTetrominoBlockPoints(this.activeObj.objectArray)
     for (let i = 0; i < updatedTetrominoPointsWithBlock.length; i++) {
-      this.board[updatedTetrominoPointsWithBlock[i][0]][updatedTetrominoPointsWithBlock[i][1]] = this.activeChar}  
+      this.board[updatedTetrominoPointsWithBlock[i][0]][updatedTetrominoPointsWithBlock[i][1]] = this.activeChar
+    }
+    console.log("AFTER\n",this.toString())
   }
 
   canMoveToDirection(direction){
@@ -127,6 +131,8 @@ export class Board {
   }
 
   canShapeFit(shapeArray){
+    console.log('shapearray', shapeArray)
+    console.log('board', this.board)
     for (let i = 0; i < shapeArray.length; i++) {
       let yPos = shapeArray[i][0]
       let xPos = shapeArray[i][1]
@@ -142,7 +148,7 @@ export class Board {
 
   getActiveTetrominoBlockPoints(tetromino){
     let tetrominoPointsWithBlock = []
-    let flattenTetromino = this.activeObj.objectArray.flat()
+    let flattenTetromino = tetromino.flat()
     for (let i = 0; i < this.activeBlockPos.length; i++) {
       if(flattenTetromino[i] != "."){tetrominoPointsWithBlock.push(this.activeBlockPos[i])
       }
