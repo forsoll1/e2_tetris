@@ -1,12 +1,13 @@
 export class NewTetromino{
-    static T_SHAPE = new NewTetromino(this.tetroShapes["T"][0])
-    static I_SHAPE = new NewTetromino(this.tetroShapes["I"][0])
-    static L_SHAPE = new NewTetromino(this.tetroShapes["L"][0])
-    static J_SHAPE = new NewTetromino(this.tetroShapes["J"][0])
-    static S_SHAPE = new NewTetromino(this.tetroShapes["S"][0])
-    static Z_SHAPE = new NewTetromino(this.tetroShapes["Z"][0])
-    static O_SHAPE = new NewTetromino(this.tetroShapes["O"][0])
- 
+
+    static T_SHAPE = new NewTetromino("...\nTTT\n.T.")
+    static I_SHAPE = new NewTetromino("....\nIIII\n....\n....")
+    static L_SHAPE = new NewTetromino("...\nLLL\nL..")
+    static J_SHAPE = new NewTetromino("...\nJJJ\n..J")
+    static S_SHAPE = new NewTetromino("...\n.SS\nSS.")
+    static Z_SHAPE = new NewTetromino("...\nZZ.\n.ZZ")
+    static O_SHAPE = new NewTetromino(".OO\n.OO\n...")
+
     static tetroShapes = {
         "I": ["....\nIIII\n....\n....", "..I.\n..I.\n..I.\n..I."],
         "T": ["...\nTTT\n.T.", ".T.\nTT.\n.T.", "...\n.T.\nTTT", ".T.\n.TT\n.T."],
