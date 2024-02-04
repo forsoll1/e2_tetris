@@ -32,6 +32,10 @@ export class Tetromino{
        }
    }
 
+   handleRotate(direction){
+    
+   }
+
    rotateRight(){
         if(this.shapeChar === "O"){ return this}
         if(this.shapeChar === "I"){ return new Tetromino(this.rotateISHAPE()) }
