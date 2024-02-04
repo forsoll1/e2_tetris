@@ -1,26 +1,26 @@
 export class Tetromino{
-   static T_SHAPE = new Tetromino(".T.\nTTT\n...")
-   static I_SHAPE = new Tetromino(".....\n.....\nIIII.\n.....\n.....")
-   static O_SHAPE = new Tetromino(".OO\n.OO\n...")
+    static T_SHAPE = new Tetromino(".T.\nTTT\n...")
+    static I_SHAPE = new Tetromino(".....\n.....\nIIII.\n.....\n.....")
+    static O_SHAPE = new Tetromino(".OO\n.OO\n...")
 
-   objectArray;
-   shapeChar;
+    objectArray;
+    shapeChar;
 
-   constructor(shape){
-       this.objectArray = []
-       let shapeAsArray = shape.replace(/\t| |\n$/g, '').split("\n")
-       for (let line = 0; line < shapeAsArray.length; line++) {
-           let row = []
-           for (let char = 0; char < shapeAsArray[line].length; char++) {
+    constructor(shape){
+        this.objectArray = []
+        let shapeAsArray = shape.replace(/\t| |\n$/g, '').split("\n")
+        for (let line = 0; line < shapeAsArray.length; line++) {
+            let row = []
+            for (let char = 0; char < shapeAsArray[line].length; char++) {
                 let newChar = shapeAsArray[line][char]
                 if(!this.shapeChar && newChar != "."){this.shapeChar = newChar}
                 row.push(newChar)
-           }
-           this.objectArray.push(row)
-       }
+            }
+            this.objectArray.push(row)
+        }
     }
 
-   rotateRight(){
+    rotateRight(){
         if(this.shapeChar === "O"){ return this}
         if(this.shapeChar === "I"){ return new Tetromino(this.rotateISHAPE()) }
         return new Tetromino(this.toString(this.returnRotatedShape("right")))

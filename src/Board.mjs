@@ -1,6 +1,5 @@
 import { cloneDeep } from "lodash";
 import { Tetromino } from "./Tetromino.mjs";
-import { NewTetromino } from "./NewTetromino.mjs";
 
 export class Board {
   width;
