@@ -14,8 +14,7 @@ export class Tetromino{
 
     "S": ["...\n.SS\nSS.", "S..\nSS.\n.S.",],
 
-    "Z": ["...\nZZ.\n.ZZ", "..Z\n.ZZ\n.Z."]
-    }
+    "Z": ["...\nZZ.\n.ZZ", "..Z\n.ZZ\n.Z."]}
    objectArray;
    shapeChar;
 
@@ -31,11 +30,17 @@ export class Tetromino{
            }
            this.objectArray.push(row)
        }
-   }
+    }
 
    handleRotate(direction){
-    
-   }
+    let shapes = this.tetroShapes.shapeChar
+    let pointer;
+    for (let i = 0; i < shapes.length; i++) {
+        if (this.toString() === shapes[i]){pointer = i}   
+    }
+    if (pointer + direction < 0){pointer = shapes.length - 1}
+    else if (pointer + direction === shapes.length){pointer = 0}
+    else {pointer += direction}}
 
    rotateRight(){
         if(this.shapeChar === "O"){ return this}
