@@ -1,7 +1,7 @@
-export class Tetromino{
-    static T_SHAPE = new Tetromino(".T.\nTTT\n...")
-    static I_SHAPE = new Tetromino(".....\n.....\nIIII.\n.....\n.....")
-    static O_SHAPE = new Tetromino(".OO\n.OO\n...")
+export class NewTetromino{
+    static T_SHAPE = new NewTetromino("...\nTTT\n.T.")
+    static I_SHAPE = new NewTetromino("....\nIIII\n....\n....")
+    static O_SHAPE = new NewTetromino(".OO\n.OO\n...")
  
      tetroShapes = {
      "I": ["....\nIIII\n....\n....", "..I.\n..I.\n..I.\n..I."],
@@ -33,7 +33,7 @@ export class Tetromino{
      }
  
      handleRotate(direction){
-         let shapes = this.tetroShapes.shapeChar
+         let shapes = this.tetroShapes[shapeChar]
          let pointer;
          for (let i = 0; i < shapes.length; i++) {
              if (this.toString() === shapes[i]){pointer = i}   
@@ -41,19 +41,16 @@ export class Tetromino{
          if (pointer + direction < 0){pointer = shapes.length - 1}
          else if (pointer + direction === shapes.length){pointer = 0}
          else {pointer += direction}
+         return NewTetromino(this.tetroShapes[this.shapeChar][pointer])
      }
  
     rotateRight(){
-         if(this.shapeChar === "O"){ return this}
-         if(this.shapeChar === "I"){ return new Tetromino(this.rotateISHAPE()) }
-         return new Tetromino(this.toString(this.returnRotatedShape("right")))
-     }
+        this.handleRotate(1)
+    }
  
-     rotateLeft(){
-         if(this.shapeChar === "O"){ return this}
-         if(this.shapeChar === "I"){ return new Tetromino(this.rotateISHAPE()) }
-         return new Tetromino(this.toString(this.returnRotatedShape("left")))       
-     }   
+    rotateLeft(){
+        this.handleRotate(-1)    
+    }   
      
      returnRotatedShape(direction){
          let len = this.objectArray.length
