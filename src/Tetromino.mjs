@@ -3,18 +3,6 @@ export class Tetromino{
    static I_SHAPE = new Tetromino(".....\n.....\nIIII.\n.....\n.....")
    static O_SHAPE = new Tetromino(".OO\n.OO\n...")
 
-    tetroShapes = {
-    "I": ["....\nIIII\n....\n....", "..I.\n..I.\n..I.\n..I."],
-
-    "T": ["...\nTTT\n.T.", ".T.\nTT.\n.T.", "...\n.T.\nTTT", ".T.\n.TT\n.T."],
-
-    "L": ["...\nLLL\nL..", "LL.\n.L.\n.L.", "...\n..L\nLLL", ".L.\n.L.\n.LL"],
-
-    "J": ["...\nJJJ\n..J", ".J.\n.J.\nJJ.", "...\nJ..\nJJJ", ".JJ\n.J.\n.J."],
-
-    "S": ["...\n.SS\nSS.", "S..\nSS.\n.S.",],
-
-    "Z": ["...\nZZ.\n.ZZ", "..Z\n.ZZ\n.Z."]}
    objectArray;
    shapeChar;
 
@@ -31,16 +19,6 @@ export class Tetromino{
            this.objectArray.push(row)
        }
     }
-
-   handleRotate(direction){
-    let shapes = this.tetroShapes.shapeChar
-    let pointer;
-    for (let i = 0; i < shapes.length; i++) {
-        if (this.toString() === shapes[i]){pointer = i}   
-    }
-    if (pointer + direction < 0){pointer = shapes.length - 1}
-    else if (pointer + direction === shapes.length){pointer = 0}
-    else {pointer += direction}}
 
    rotateRight(){
         if(this.shapeChar === "O"){ return this}
