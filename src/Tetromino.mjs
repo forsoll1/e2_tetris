@@ -2,7 +2,16 @@ export class Tetromino{
    static T_SHAPE = new Tetromino(".T.\nTTT\n...")
    static I_SHAPE = new Tetromino(".....\n.....\nIIII.\n.....\n.....")
    static O_SHAPE = new Tetromino(".OO\n.OO\n...")
-
+    I_Shapes = [    "....\nIIII\n....\n....", 
+                    "..I.\n..I.\n..I.\n..I."]
+    T_Shapes = [    "...\nTTT\n.T.",
+                    ".T.\nTT.\n.T.",
+                    "...\n.T.\nTTT",
+                    ".T.\n.TT\n.T."]
+    L_Shapes = [    "...\nLLL\nL..",
+                    "LL.\n.L.\n.L.",
+                    "...\n..L\nLLL",
+                    ".L.\n.L.\n.LL"]
    objectArray;
    shapeChar;
 
