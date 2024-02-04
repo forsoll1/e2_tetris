@@ -3,29 +3,17 @@ export class Tetromino{
    static I_SHAPE = new Tetromino(".....\n.....\nIIII.\n.....\n.....")
    static O_SHAPE = new Tetromino(".OO\n.OO\n...")
 
-    I_Shapes = [    "....\nIIII\n....\n....", 
-                    "..I.\n..I.\n..I.\n..I."]
+    I_Shapes = ["....\nIIII\n....\n....", "..I.\n..I.\n..I.\n..I."]
 
-    T_Shapes = [    "...\nTTT\n.T.",
-                    ".T.\nTT.\n.T.",
-                    "...\n.T.\nTTT",
-                    ".T.\n.TT\n.T."]
+    T_Shapes = ["...\nTTT\n.T.", ".T.\nTT.\n.T.", "...\n.T.\nTTT", ".T.\n.TT\n.T."]
 
-    L_Shapes = [    "...\nLLL\nL..",
-                    "LL.\n.L.\n.L.",
-                    "...\n..L\nLLL",
-                    ".L.\n.L.\n.LL"]
+    L_Shapes = ["...\nLLL\nL..", "LL.\n.L.\n.L.", "...\n..L\nLLL", ".L.\n.L.\n.LL"]
 
-    J_Shapes = [    "...\nJJJ\n..J",
-                    ".J.\n.J.\nJJ.",
-                    "...\nJ..\nJJJ",
-                    ".JJ\n.J.\n.J."]
+    J_Shapes = ["...\nJJJ\n..J", ".J.\n.J.\nJJ.", "...\nJ..\nJJJ", ".JJ\n.J.\n.J."]
 
-    S_Shapes = [    "...\n.SS\nSS.",
-                    "S..\nSS.\n.S.",]
+    S_Shapes = ["...\n.SS\nSS.", "S..\nSS.\n.S.",]
 
-    Z_Shapes = [    "...\nZZ.\n.ZZ",
-                    "..Z\n.ZZ\n.Z."]
+    Z_Shapes = ["...\nZZ.\n.ZZ", "..Z\n.ZZ\n.Z."]
 
    objectArray;
    shapeChar;
