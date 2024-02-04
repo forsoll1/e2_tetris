@@ -21,6 +21,12 @@ export class Tetromino{
                     "...\nJ..\nJJJ",
                     ".JJ\n.J.\n.J."]
 
+    S_Shapes = [    "...\n.SS\nSS.",
+                    "S..\nSS.\n.S.",]
+
+    Z_Shapes = [    "...\nZZ.\n.ZZ",
+                    "..Z\n.ZZ\n.Z."]
+
    objectArray;
    shapeChar;
 
