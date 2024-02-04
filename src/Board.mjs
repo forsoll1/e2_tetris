@@ -1,5 +1,6 @@
 import { cloneDeep } from "lodash";
 import { Tetromino } from "./Tetromino.mjs";
+import { NewTetromino } from "./NewTetromino.mjs";
 
 export class Board {
   width;
@@ -30,10 +31,11 @@ export class Board {
   drop(shape){
     if(!this.falling){
       this.activeBlockPos = []
-      shape = shape instanceof Tetromino? shape : new Tetromino(shape)
+      if (!(shape instanceof Tetromino) && !(shape instanceof NewTetromino)){shape = new NewTetromino(shape)}
       this.activeObj = shape
       this.activeChar = shape.shapeChar
       this.activeBlocksToArray(shape.objectArray)
+      this.updateNewActivePointsToBoard()
       this.falling = true
     }else{throw("already falling")}
   }
@@ -43,9 +45,21 @@ export class Board {
     for (let i = 0; i < shapeArray.length; i++) {
       for (let j = 0; j < shapeArray[i].length; j++) {
         this.activeBlockPos.push([i,(shapeLeftEdge + j)])
-        this.board[i][shapeLeftEdge + j] = shapeArray[i][j]
       }
     }
+    if(this.allSameValues(shapeArray[0]) && shapeArray[0].length > 1){
+      for (let i = 0; i < this.activeBlockPos.length; i++) {
+        this.activeBlockPos[i][0] -= 1
+      }
+    }
+  }
+
+  allSameValues(arr){
+    let val1 = arr[0]
+    for (let i = 0; i < arr.length; i++) {
+      if(arr[i] !== val1){return false}
+    }
+    return true
   }
 
   tick(){
