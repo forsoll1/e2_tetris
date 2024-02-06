@@ -50,12 +50,12 @@ export class NewTetromino{
 
     rotateRight(){
         if (this.shapeChar === "O"){return this}
-        this.handleRotate(1)
+        return this.handleRotate(1)
     }
 
     rotateLeft(){
         if (this.shapeChar === "O"){return this}
-        this.handleRotate(-1)    
+        return this.handleRotate(-1)    
     }
 
     toString(arr){
