@@ -71,12 +71,6 @@ export class Board {
   }
 
   updateBoard(direction){
-    let yVal = 0
-    let xVal = 0
-    if(direction === "down") {yVal = 1}
-    if(direction === "left") {xVal = -1}
-    if(direction === "right") {xVal = 1}
-
     this.deleteOldActivePointsFromBoard()
     this.activeBlockPos = this.moveActiveBlockPosToDirection(this.activeBlockPos, direction)
     this.updateNewActivePointsToBoard()

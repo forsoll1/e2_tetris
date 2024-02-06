@@ -31,7 +31,8 @@ describe("Falling rotating tetrominoes", () => {
   });
 
   test("Tetromino can rotate left", () => {
-    board.drop(Tetromino.T_SHAPE);
+    board.drop(NewTetromino.T_SHAPE);
+    board.tick()
     board.rotateLeft()
 
     expect(board.toString()).to.equalShape(
@@ -44,12 +45,13 @@ describe("Falling rotating tetrominoes", () => {
     );
   });
   test("Tetromino can rotate right", () => {
-    board.drop(Tetromino.T_SHAPE);
+    board.drop(NewTetromino.T_SHAPE);
+    board.tick()
     board.rotateRight()
 
     expect(board.toString()).to.equalShape(
       `....T.....
-       ....TT....
+       ...TT.....
        ....T.....
        ..........
        ..........
@@ -57,21 +59,24 @@ describe("Falling rotating tetrominoes", () => {
     );
   });
     test("Tetromino can't rotate through blocks'", () => {
-    board.drop(Tetromino.T_SHAPE);
+    board.drop(NewTetromino.T_SHAPE);
+    board.tick()
     board.rotateRight()
+    board.moveLeft()
+    board.moveLeft()
+    fallToBottom(board)
+    board.drop(NewTetromino.T_SHAPE)
+    board.tick()
+    board.rotateLeft()
     board.moveRight()
     fallToBottom(board)
-    board.drop(Tetromino.T_SHAPE)
-    board.rotateLeft()
-    board.moveLeft()
-    board.moveLeft()
-    fallToBottom(board)
-    board.drop(Tetromino.T_SHAPE)
-    board.rotateLeft()
+    board.drop(NewTetromino.T_SHAPE)
     board.tick()
     board.tick()
+    board.rotateRight()
     board.tick()
-    board.rotateLeft()
+    board.tick()
+    board.rotateRight()
 
 
     expect(board.toString()).to.equalShape(
@@ -85,8 +90,9 @@ describe("Falling rotating tetrominoes", () => {
   });
 
   test("Kick right when rotating next to left wall", () => {
-    board.drop(Tetromino.T_SHAPE);
-    board.rotateRight()
+    board.drop(NewTetromino.T_SHAPE);
+    board.tick()
+    board.rotateLeft()
     board.moveLeft()
     board.moveLeft()
     board.moveLeft()
@@ -94,9 +100,9 @@ describe("Falling rotating tetrominoes", () => {
     board.rotateLeft()
 
     expect(board.toString()).to.equalShape(
-      `.T........
+      `..........
+       .T........
        TTT.......
-       ..........
        ..........
        ..........
        ..........`
@@ -104,8 +110,9 @@ describe("Falling rotating tetrominoes", () => {
   });
 
   test("Kick left when rotating next to left wall", () => {
-    board.drop(Tetromino.T_SHAPE);
-    board.rotateLeft()
+    board.drop(NewTetromino.T_SHAPE);
+    board.tick()
+    board.rotateRight()
     board.moveRight()
     board.moveRight()
     board.moveRight()
@@ -114,10 +121,31 @@ describe("Falling rotating tetrominoes", () => {
     board.rotateRight()
 
     expect(board.toString()).to.equalShape(
-      `........T.
+      `..........
+       ........T.
        .......TTT
        ..........
        ..........
+       ..........`
+    );
+  });
+
+  test("I shape doesn't kick", () => {
+
+    board.drop(NewTetromino.I_SHAPE);
+    board.tick()
+    board.rotateLeft()
+    board.moveRight()
+    board.moveRight()
+    board.moveRight()
+    board.moveRight()
+    board.rotateLeft()
+
+    expect(board.toString()).to.equalShape(
+      `.........I
+       .........I
+       .........I
+       .........I
        ..........
        ..........`
     );
