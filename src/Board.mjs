@@ -126,6 +126,16 @@ export class Board {
     }
   }
 
+  checkForKicks(rotatedObject){
+    if (this.activeChar === "I"){return}
+    if (this.falling && this.canMoveToDirection(rotatedObject.objectArray, "left")){
+      this.handleRotationOnBoard(rotatedObject, "left")
+      return}
+    if (this.falling && this.canMoveToDirection(rotatedObject.objectArray, "right")){
+      this.handleRotationOnBoard(rotatedObject, "right")
+      return}
+  }
+
   handleRotationOnBoard(newTetromino, kickDirection){
     this.deleteOldActivePointsFromBoard()
     this.activeObj = newTetromino
