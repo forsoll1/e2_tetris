@@ -21,9 +21,9 @@ describe("The T shape", () => {
 
   test("initial orientation", () => {
     expect(shape.toString()).to.equalShape(
-      `TTT
-       .T.
-       ...`
+      `...
+       TTT
+       .T.`
     );
   });
 

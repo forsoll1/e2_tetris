@@ -9,13 +9,13 @@ export class NewTetromino{
     static O_SHAPE = new NewTetromino(".OO\n.OO\n...\n")
 
     tetroShapes = {
-        "I": ["....\nIIII\n....\n....", "..I.\n..I.\n..I.\n..I."],
-        "T": ["...\nTTT\n.T.", ".T.\nTT.\n.T.", "...\n.T.\nTTT", ".T.\n.TT\n.T."],
-        "L": ["...\nLLL\nL..", "LL.\n.L.\n.L.", "...\n..L\nLLL", ".L.\n.L.\n.LL"],
-        "J": ["...\nJJJ\n..J", ".J.\n.J.\nJJ.", "...\nJ..\nJJJ", ".JJ\n.J.\n.J."],
-        "S": ["...\n.SS\nSS.", "S..\nSS.\n.S.",],
-        "Z": ["...\nZZ.\n.ZZ", "..Z\n.ZZ\n.Z."],
-        "O": [".OO\n.OO\n..."],
+        "I": ["....\nIIII\n....\n....\n", "..I.\n..I.\n..I.\n..I.\n"],
+        "T": ["...\nTTT\n.T.\n", ".T.\nTT.\n.T.\n", "...\n.T.\nTTT\n", ".T.\n.TT\n.T.\n"],
+        "L": ["...\nLLL\nL..\n", "LL.\n.L.\n.L.\n", "...\n..L\nLLL\n", ".L.\n.L.\n.LL\n"],
+        "J": ["...\nJJJ\n..J\n", ".J.\n.J.\nJJ.\n", "...\nJ..\nJJJ\n", ".JJ\n.J.\n.J.\n"],
+        "S": ["...\n.SS\nSS.\n", "S..\nSS.\n.S.\n",],
+        "Z": ["...\nZZ.\n.ZZ\n", "..Z\n.ZZ\n.Z.\n"],
+        "O": [".OO\n.OO\n...\n"],
     }
 
     objectArray;
@@ -40,9 +40,6 @@ export class NewTetromino{
         let shapes = this.tetroShapes[`${this.shapeChar}`]
         let pointer = 0
         for (let i = 0; i < shapes.length; i++) {
-            console.log("THIS",this.toString())
-            console.log('SHAPE', this.toString(shapes[i]))
-            console.log('HIT?', this.toString() === shapes[i])
             if (this.toString() === shapes[i]){pointer = i}
         }
         if (pointer + direction < 0){pointer = shapes.length - 1}
