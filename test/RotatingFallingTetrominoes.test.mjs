@@ -139,6 +139,7 @@ describe("Falling rotating tetrominoes", () => {
     board.moveRight()
     board.moveRight()
     board.moveRight()
+    board.moveRight()
     board.rotateLeft()
 
     expect(board.toString()).to.equalShape(
