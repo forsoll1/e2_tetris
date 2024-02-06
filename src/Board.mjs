@@ -160,6 +160,7 @@ export class Board {
     for (let i = 0; i < shapeArray.length; i++) {
       let yPos = shapeArray[i][0]
       let xPos = shapeArray[i][1]
+      if(yPos < 0){return false}
       if(xPos < 0){return false}
       if(xPos === this.width){return false}
       if(yPos === this.height){return false}
