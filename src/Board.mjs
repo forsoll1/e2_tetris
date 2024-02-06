@@ -105,16 +105,7 @@ export class Board {
   }
 
   rotateRight(){
-    let newActiveBlocks = this.getActiveTetrominoBlockPoints(this.activeObj.rotateRight().objectArray)
-    if (this.falling && this.canShapeFit(newActiveBlocks)){
-      this.handleRotationOnBoard(this.activeObj.rotateRight())
-    }else if (this.activeChar === "I") { 
-      return
-    }else if (this.falling && this.canMoveToDirection(this.activeObj.rotateRight().objectArray, "left")){
-      this.handleRotationOnBoard(this.activeObj.rotateRight(), "left")
-    }else if (this.falling && this.canMoveToDirection(this.activeObj.rotateRight().objectArray, "right")){
-      this.handleRotationOnBoard(this.activeObj.rotateRight(), "right")
-    }
+    this.handleRotation(this.activeObj.rotateRight())
   }
 
   handleRotation(rotatedObject){
