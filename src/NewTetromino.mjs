@@ -1,14 +1,14 @@
 export class NewTetromino{
 
-    static T_SHAPE = new NewTetromino("...\nTTT\n.T.")
-    static I_SHAPE = new NewTetromino("....\nIIII\n....\n....")
-    static L_SHAPE = new NewTetromino("...\nLLL\nL..")
-    static J_SHAPE = new NewTetromino("...\nJJJ\n..J")
-    static S_SHAPE = new NewTetromino("...\n.SS\nSS.")
-    static Z_SHAPE = new NewTetromino("...\nZZ.\n.ZZ")
-    static O_SHAPE = new NewTetromino(".OO\n.OO\n...")
+    static T_SHAPE = new NewTetromino("...\nTTT\n.T.\n")
+    static I_SHAPE = new NewTetromino("....\nIIII\n....\n....\n")
+    static L_SHAPE = new NewTetromino("...\nLLL\nL..\n")
+    static J_SHAPE = new NewTetromino("...\nJJJ\n..J\n")
+    static S_SHAPE = new NewTetromino("...\n.SS\nSS.\n")
+    static Z_SHAPE = new NewTetromino("...\nZZ.\n.ZZ\n")
+    static O_SHAPE = new NewTetromino(".OO\n.OO\n...\n")
 
-    static tetroShapes = {
+    tetroShapes = {
         "I": ["....\nIIII\n....\n....", "..I.\n..I.\n..I.\n..I."],
         "T": ["...\nTTT\n.T.", ".T.\nTT.\n.T.", "...\n.T.\nTTT", ".T.\n.TT\n.T."],
         "L": ["...\nLLL\nL..", "LL.\n.L.\n.L.", "...\n..L\nLLL", ".L.\n.L.\n.LL"],
@@ -37,15 +37,18 @@ export class NewTetromino{
     }
 
     handleRotate(direction){
-        let shapes = this.tetroShapes[shapeChar]
-        let pointer;
+        let shapes = this.tetroShapes[`${this.shapeChar}`]
+        let pointer = 0
         for (let i = 0; i < shapes.length; i++) {
+            console.log("THIS",this.toString())
+            console.log('SHAPE', this.toString(shapes[i]))
+            console.log('HIT?', this.toString() === shapes[i])
             if (this.toString() === shapes[i]){pointer = i}
         }
         if (pointer + direction < 0){pointer = shapes.length - 1}
         else if (pointer + direction === shapes.length){pointer = 0}
         else {pointer += direction}
-        return NewTetromino(this.tetroShapes[this.shapeChar][pointer])
+        return new NewTetromino(shapes[pointer])
     }
 
     rotateRight(){
