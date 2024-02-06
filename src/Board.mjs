@@ -126,7 +126,12 @@ export class Board {
     }
   }
 
-  checkForKicks(rotatedObject){
+  handleRotation(rotatedObject){
+    let newActiveBlocks = this.getActiveTetrominoBlockPoints(rotatedObject.objectArray)
+    if (this.falling && this.canShapeFit(newActiveBlocks)){
+      this.handleRotationOnBoard(rotatedObject)
+      return
+    }
     if (this.activeChar === "I"){return}
     if (this.falling && this.canMoveToDirection(rotatedObject.objectArray, "left")){
       this.handleRotationOnBoard(rotatedObject, "left")
