@@ -64,7 +64,7 @@ export class Board {
   tick(){
     if(this.falling && this.canMoveToDirection(this.activeObj.objectArray, "down")){
       this.updateBoard("down")
-    }else{
+    }else if (this.falling){
       this.handleLineClear()
       this.falling = false
     }
@@ -80,10 +80,8 @@ export class Board {
     if (clearedLineIndexes.length > 0){
       for (let i = 0; i < clearedLineIndexes.length; i++) {
         for (let j = clearedLineIndexes[i]; j > -1; j--) {
-          for (let charIndex = 0; charIndex < this.board[j].length; charIndex++) {
-            if (j > 0) {this.board[j][charIndex] = this.board[j - 1][charIndex]}
-            if (j === 0) {this.board[j][charIndex] = "."}
-          }
+          if (j > 0){this.board[j] = this.board[j - 1]}
+          if (j === 0){this.board[j] = Array(this.width).fill(".")}
         }
       }
     }
