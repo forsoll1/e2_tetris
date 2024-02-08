@@ -77,7 +77,13 @@ export class Board {
         clearedLineIndexes.push(i)
       }
     }
+    if (clearedLineIndexes.length > 0){
+      for (let i = 0; i < clearedLineIndexes.length; i++) {
+        this.board[clearedLineIndexes[i]] = Array(this.width).fill(".")
+      }
+    }
   }
+  
   updateBoard(direction){
     this.deleteOldActivePointsFromBoard()
     this.activeBlockPos = this.moveActiveBlockPosToDirection(this.activeBlockPos, direction)
