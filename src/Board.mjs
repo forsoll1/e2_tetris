@@ -1,5 +1,4 @@
 import { cloneDeep } from "lodash";
-import { Tetromino } from "./Tetromino.mjs";
 import { NewTetromino } from "./NewTetromino.mjs";
 
 export class Board {
@@ -31,7 +30,7 @@ export class Board {
   drop(shape){
     if(!this.falling){
       this.activeBlockPos = []
-      if (!(shape instanceof Tetromino) && !(shape instanceof NewTetromino)){shape = new NewTetromino(shape)}
+      if (!(shape instanceof NewTetromino)){shape = new NewTetromino(shape)}
       this.activeObj = shape
       this.activeChar = shape.shapeChar
       this.activeBlocksToArray(shape.objectArray)

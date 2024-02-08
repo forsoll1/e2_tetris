@@ -1,7 +1,6 @@
 import { beforeEach, describe, test } from "vitest";
 import { expect } from "chai";
 import { Board } from "../src/Board.mjs";
-import { Tetromino } from "../src/Tetromino.mjs";
 import { NewTetromino } from "../src/NewTetromino.mjs";
 
 function fallToBottom(board) {
@@ -147,20 +146,6 @@ describe("Falling rotating tetrominoes", () => {
        .........I
        .........I
        .........I
-       ..........
-       ..........`
-    );
-  });
-
-
-
-  test.skip("TEST TEMPLATE", () => {
-
-    expect(board.toString()).to.equalShape(
-      `..........
-       ..........
-       ..........
-       ..........
        ..........
        ..........`
     );
