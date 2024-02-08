@@ -65,10 +65,19 @@ export class Board {
     if(this.falling && this.canMoveToDirection(this.activeObj.objectArray, "down")){
       this.updateBoard("down")
     }else{
+      this.handleLineClear()
       this.falling = false
     }
   }
 
+  handleLineClear(){
+    let clearedLineIndexes = []
+    for (let i = 0; i < this.board.length; i++) {
+      if (this.allSameValues(this.board[i])){
+        clearedLineIndexes.push(i)
+      }
+    }
+  }
   updateBoard(direction){
     this.deleteOldActivePointsFromBoard()
     this.activeBlockPos = this.moveActiveBlockPosToDirection(this.activeBlockPos, direction)
