@@ -33,6 +33,27 @@ describe("Clearing full lines", () => {
     );
   });
 
+  test("One line clear drops the blocks above the clear one step down", () => {
+
+    board.drop(NewTetromino.T_SHAPE);
+    board.moveLeft()
+    fallToBottom(board)
+    board.drop(NewTetromino.I_SHAPE);
+    board.tick()
+    board.rotateRight()
+    board.moveRight()
+    fallToBottom(board)
+
+    expect(board.toString()).to.equalShape(
+      `....
+       ....
+       ....
+       ...I
+       ...I
+       .T.I`
+    );
+  });
+
   test.skip("TEST TEMPLATE", () => {
 
     expect(board.toString()).to.equalShape(

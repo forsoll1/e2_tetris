@@ -73,7 +73,7 @@ export class Board {
   handleLineClear(){
     let clearedLineIndexes = []
     for (let i = 0; i < this.board.length; i++) {
-      if (this.allSameValues(this.board[i])){
+      if (!(this.board[i].includes("."))){
         clearedLineIndexes.push(i)
       }
     }
