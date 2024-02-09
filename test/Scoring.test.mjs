@@ -27,4 +27,13 @@ describe("Tally score with observer pattern", () => {
         board.unsubscribe(dummy)
         expect(board.subscribers.length).to.equal(0)
     })
+    test("Receive data from observable", () => {
+        let msg = "message"
+        let receivedMsg;
+        const receiver = (data) => {receivedMsg = data}
+        board.subscribe(receiver)
+        board.notify(msg)
+        expect(receivedMsg).to.equal("message")
+      })
+
   })
