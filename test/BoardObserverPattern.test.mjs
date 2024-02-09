@@ -52,4 +52,14 @@ describe("Board sends out line clear data", () => {
         fallToBottom(board)
         expect(receivedMsg).to.equal(1)
     })
+
+    test("Multiple lines clear", () => {
+        board.drop(NewTetromino.O_SHAPE)
+        board.moveLeft()
+        fallToBottom(board)
+        board.drop(NewTetromino.O_SHAPE)
+        board.moveRight()
+        fallToBottom(board)
+        expect(receivedMsg).to.equal(2)
+    })
 })
