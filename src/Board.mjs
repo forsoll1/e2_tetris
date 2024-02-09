@@ -80,7 +80,7 @@ export class Board extends Observable {
       }
     }
     if (clearedLineIndexes.length > 0){
-      this.handleScoring(clearedLineIndexes)
+      this.handleScoring(clearedLineIndexes.length)
       this.clearLines(clearedLineIndexes)
     }
   }
@@ -94,7 +94,9 @@ export class Board extends Observable {
     }    
   }
 
-  handleScoring(){}
+  handleScoring(numberOfLinesCleared){
+    this.notify(numberOfLinesCleared)
+  }
   
   updateBoard(direction){
     this.deleteOldActivePointsFromBoard()
