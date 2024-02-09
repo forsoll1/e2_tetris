@@ -9,7 +9,7 @@ function fallToBottom(board) {
   }
 }
 
-describe("Tally score with observer pattern", () => {
+describe("Basic observer pattern tests", () => {
     let board;
     beforeEach(() => {
       board = new Board(4, 10);
@@ -36,4 +36,20 @@ describe("Tally score with observer pattern", () => {
         expect(receivedMsg).to.equal("message")
       })
 
-  })
+})
+
+describe("Board sends out line clear data", () => {
+    let board;
+    let receivedMsg;
+    const receiver = (data) => {receivedMsg = data}
+    beforeEach(() => {
+        board = new Board(4, 10);
+        board.subscribe(receiver)
+    });
+  
+    test("One line clear", () => {
+        board.drop(NewTetromino.I_SHAPE)
+        fallToBottom(board)
+        expect(receivedMsg).to.equal(1)
+    })
+})
