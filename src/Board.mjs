@@ -86,6 +86,15 @@ export class Board {
       }
     }
   }
+
+  clearLines(arr){
+    for (let i = 0; i < arr.length; i++) {
+      for (let j = arr[i]; j > -1; j--) {
+        if (j > 0){this.board[j] = this.board[j - 1]}
+        if (j === 0){this.board[j] = Array(this.width).fill(".")}
+      }
+    }    
+  }
   
   updateBoard(direction){
     this.deleteOldActivePointsFromBoard()
