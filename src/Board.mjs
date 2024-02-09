@@ -78,12 +78,7 @@ export class Board {
       }
     }
     if (clearedLineIndexes.length > 0){
-      for (let i = 0; i < clearedLineIndexes.length; i++) {
-        for (let j = clearedLineIndexes[i]; j > -1; j--) {
-          if (j > 0){this.board[j] = this.board[j - 1]}
-          if (j === 0){this.board[j] = Array(this.width).fill(".")}
-        }
-      }
+      this.clearLines(clearedLineIndexes)
     }
   }
 
