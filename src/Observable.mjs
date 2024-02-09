@@ -9,4 +9,7 @@ export class Observable {
     unsubscribe(subscriber) {
         this.subscribers = this.subscribers.filter((i) => i !== subscriber)
     }
+    notify(data) {
+        this.subscribers.forEach(sub => {sub(data)});
+    }
 }
