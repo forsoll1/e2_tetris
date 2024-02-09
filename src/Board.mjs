@@ -1,7 +1,8 @@
 import { cloneDeep } from "lodash";
 import { NewTetromino } from "./NewTetromino.mjs";
+import { Observable } from "./Observable.mjs";
 
-export class Board {
+export class Board extends Observable {
   width;
   height;
   board;
@@ -11,6 +12,7 @@ export class Board {
   activeBlockPos;
 
   constructor(width, height) {
+    super()
     this.width = width;
     this.height = height;
     this.board = new Array();
