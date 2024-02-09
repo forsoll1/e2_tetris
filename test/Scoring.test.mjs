@@ -20,4 +20,11 @@ describe("Tally score with observer pattern", () => {
       board.subscribe(dummy)
       expect(board.subscribers.length).to.equal(1)
     })
+
+    test("Subscriber can unsubscribe", () => {
+        const dummy = "tester"
+        board.subscribe(dummy)
+        board.unsubscribe(dummy)
+        expect(board.subscribers.length).to.equal(0)
+    })
   })
