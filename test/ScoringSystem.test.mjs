@@ -2,6 +2,7 @@ import { beforeEach, describe, test } from "vitest";
 import { expect } from "chai";
 import { Board } from "../src/Board.mjs";
 import { NewTetromino } from "../src/NewTetromino.mjs";
+import { ScoringSystem } from "../src/ScoringSystem.mjs"
 
 function fallToBottom(board) {
     for (let i = 0; i < 10; i++) {
@@ -20,6 +21,12 @@ describe("Basic scoring tests", () => {
         let msg = {level: 0, lines: 1}
         scoreBoard.receiveScore(msg)
         expect(scoreBoard.score).to.equal(40)
+    })
+
+    test("Correct score for two cleared lines, at second level (1)", () => {
+        let msg = {level: 1, lines: 2}
+        scoreBoard.receiveScore(msg)
+        expect(scoreBoard.score).to.equal(200)
     })
 })
 
