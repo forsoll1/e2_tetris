@@ -23,6 +23,7 @@ export class ShuffleBag{
         let pos = Math.floor(Math.random() * this.currentPos)
         this.currentItem = this.itemList[pos]
         this.itemList[pos] = this.itemList[this.currentPos]
+        this.itemList[this.currentPos] = this.currentItem
         this.currentPos -= 1
         return this.currentItem
     }
