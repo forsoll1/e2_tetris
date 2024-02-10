@@ -7,6 +7,7 @@ export class Board extends Observable {
   height;
   board;
   falling;
+  level;
   activeChar;
   activeObj;
   activeBlockPos;
@@ -18,6 +19,7 @@ export class Board extends Observable {
     this.board = new Array();
     this.testBoard = new Array();
     this.falling = false
+    this.level = 0
     this.activeBlockPos = []
     this.initBoard()
   }
@@ -95,7 +97,7 @@ export class Board extends Observable {
   }
 
   handleScoring(numberOfLinesCleared){
-    this.notify(numberOfLinesCleared)
+    this.notify({level:this.level, lines:numberOfLinesCleared})
   }
   
   updateBoard(direction){

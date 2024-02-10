@@ -36,3 +36,21 @@ describe("Basic scoring tests", () => {
     })
 })
 
+describe("Scoring from Board", () => {
+    let board
+    let scoreBoard;
+    let msg;
+
+    beforeEach(() => {
+        board = new Board(4,10)
+        scoreBoard = new ScoringSystem()
+        board.subscribe(scoreBoard.receiveScore())
+    })
+
+    test("Correct score for one cleared line", () => {
+        msg = {level: 0, lines: 1}
+        board.notify(msg)
+        expect(scoreBoard.score).to.equal(40)
+    })
+})
+
