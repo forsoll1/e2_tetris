@@ -30,8 +30,10 @@ describe("Basic observer pattern tests", () => {
     test("Receive data from observable", () => {
         let msg = "message"
         let receivedMsg;
-        const receiver = (data) => {receivedMsg = data}
-        board.subscribe(receiver)
+        const subscriber = {
+          receiver: function (msg) {receivedMsg = msg} 
+        }
+        board.subscribe(subscriber)
         board.notify(msg)
         expect(receivedMsg).to.equal("message")
       })
@@ -41,16 +43,18 @@ describe("Basic observer pattern tests", () => {
 describe("Board sends out line clear data", () => {
     let board;
     let receivedMsg;
-    const receiver = (data) => {receivedMsg = data}
+    const subscriber = {
+      receiver: function (msg) {receivedMsg = msg} 
+    }
     beforeEach(() => {
         board = new Board(4, 10);
-        board.subscribe(receiver)
+        board.subscribe(subscriber)
     });
   
     test("One line clear", () => {
         board.drop(NewTetromino.I_SHAPE)
         fallToBottom(board)
-        expect(receivedMsg).to.equal(1)
+        expect(receivedMsg).to.include({level:0,lines:1})
     })
 
     test("Multiple lines clear", () => {
@@ -60,6 +64,6 @@ describe("Board sends out line clear data", () => {
         board.drop(NewTetromino.O_SHAPE)
         board.moveRight()
         fallToBottom(board)
-        expect(receivedMsg).to.equal(2)
+        expect(receivedMsg).to.include({level:0,lines:2})
     })
 })

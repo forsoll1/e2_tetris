@@ -10,6 +10,6 @@ export class Observable {
         this.subscribers = this.subscribers.filter((i) => i !== subscriber)
     }
     notify(data) {
-        this.subscribers.forEach(sub => {sub(data)});
+        this.subscribers.forEach(sub => {sub.receiver(data)});
     }
 }

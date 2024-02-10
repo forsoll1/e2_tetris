@@ -19,19 +19,19 @@ describe("Basic scoring tests", () => {
 
     test("Correct score for one cleared line", () => {
         let msg = {level: 0, lines: 1}
-        scoreBoard.receiveScore(msg)
+        scoreBoard.receiver(msg)
         expect(scoreBoard.score).to.equal(40)
     })
 
     test("Correct score for two cleared lines, at second level (1)", () => {
         let msg = {level: 1, lines: 2}
-        scoreBoard.receiveScore(msg)
+        scoreBoard.receiver(msg)
         expect(scoreBoard.score).to.equal(200)
     })
 
     test("Correct score for four cleared lines, at 10th level (9)", () => {
         let msg = {level: 9, lines: 4}
-        scoreBoard.receiveScore(msg)
+        scoreBoard.receiver(msg)
         expect(scoreBoard.score).to.equal(12000)
     })
 })
@@ -44,7 +44,7 @@ describe("Scoring from Board", () => {
     beforeEach(() => {
         board = new Board(4,10)
         scoreBoard = new ScoringSystem()
-        board.subscribe(scoreBoard.receiveScore())
+        board.subscribe(scoreBoard)
     })
 
     test("Correct score for one cleared line", () => {
@@ -52,5 +52,22 @@ describe("Scoring from Board", () => {
         board.notify(msg)
         expect(scoreBoard.score).to.equal(40)
     })
+
+    test("Correct score for three cleared line", () => {
+        msg = {level: 0, lines: 3}
+        board.notify(msg)
+        expect(scoreBoard.score).to.equal(300)
+    })
+
+    test("Correct score for two cleared lines, using actual board mechanics", () => {
+        board.drop(NewTetromino.O_SHAPE);
+        board.moveLeft()
+        fallToBottom(board)
+        board.drop(NewTetromino.O_SHAPE);
+        board.moveRight()
+        fallToBottom(board)
+        expect(scoreBoard.score).to.equal(100)
+    })
+
 })
 

@@ -6,7 +6,7 @@ export class ScoringSystem{
     constructor(){
         this.score = 0
     }
-    receiveScore(msg){
+    receiver(msg){
         this.score += (msg.level + 1) * this.scoresForLines[msg.lines]
     }
 }
