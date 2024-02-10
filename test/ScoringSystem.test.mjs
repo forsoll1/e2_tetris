@@ -28,5 +28,11 @@ describe("Basic scoring tests", () => {
         scoreBoard.receiveScore(msg)
         expect(scoreBoard.score).to.equal(200)
     })
+
+    test("Correct score for four cleared lines, at 10th level (9)", () => {
+        let msg = {level: 9, lines: 4}
+        scoreBoard.receiveScore(msg)
+        expect(scoreBoard.score).to.equal(12000)
+    })
 })
 
