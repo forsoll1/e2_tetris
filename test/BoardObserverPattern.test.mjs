@@ -54,7 +54,7 @@ describe("Board sends out line clear data", () => {
     test("One line clear", () => {
         board.drop(NewTetromino.I_SHAPE)
         fallToBottom(board)
-        expect(receivedMsg).to.include({level:0,lines:1})
+        expect(receivedMsg).to.equal(1)
     })
 
     test("Multiple lines clear", () => {
@@ -64,6 +64,6 @@ describe("Board sends out line clear data", () => {
         board.drop(NewTetromino.O_SHAPE)
         board.moveRight()
         fallToBottom(board)
-        expect(receivedMsg).to.include({level:0,lines:2})
+        expect(receivedMsg).to.equal(2)
     })
 })

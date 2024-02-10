@@ -97,7 +97,7 @@ export class Board extends Observable {
   }
 
   handleScoring(numberOfLinesCleared){
-    this.notify({level:this.level, lines:numberOfLinesCleared})
+    this.notify(numberOfLinesCleared)
   }
   
   updateBoard(direction){

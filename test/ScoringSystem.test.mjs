@@ -18,19 +18,21 @@ describe("Basic scoring tests", () => {
     })
 
     test("Correct score for one cleared line", () => {
-        let msg = {level: 0, lines: 1}
+        let msg = 1
         scoreBoard.receiver(msg)
         expect(scoreBoard.score).to.equal(40)
     })
 
     test("Correct score for two cleared lines, at second level (1)", () => {
-        let msg = {level: 1, lines: 2}
+        let msg = 2
+        scoreBoard.level = 1
         scoreBoard.receiver(msg)
         expect(scoreBoard.score).to.equal(200)
     })
 
     test("Correct score for four cleared lines, at 10th level (9)", () => {
-        let msg = {level: 9, lines: 4}
+        let msg = 4
+        scoreBoard.level = 9
         scoreBoard.receiver(msg)
         expect(scoreBoard.score).to.equal(12000)
     })
@@ -48,13 +50,13 @@ describe("Scoring from Board", () => {
     })
 
     test("Correct score for one cleared line", () => {
-        msg = {level: 0, lines: 1}
+        msg = 1
         board.notify(msg)
         expect(scoreBoard.score).to.equal(40)
     })
 
     test("Correct score for three cleared line", () => {
-        msg = {level: 0, lines: 3}
+        msg = 3
         board.notify(msg)
         expect(scoreBoard.score).to.equal(300)
     })
