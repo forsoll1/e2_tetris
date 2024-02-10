@@ -1,7 +1,7 @@
 import { Board } from "./Board.mjs";
 import { ScoringSystem } from "./ScoringSystem.mjs";
 import { ShuffleBag } from "./ShuffleBag.mjs";
-import { Tetromino } from "./Tetromino.mjs";
+import { NewTetromino } from "./NewTetromino.mjs";
 
 // TODO: change this code to match the API you have created, if you want to run the game for some manual testing
 
@@ -16,18 +16,19 @@ function initGame() {
   };
   game.scoring = new ScoringSystem();
   game.board = new Board(game.columns, game.rows);
-  game.board.onClearLine = (lineCount) => {
-    game.scoring.linesCleared(lineCount);
-  };
+  game.board.subscribe(game.scoring)
+  //game.board.onClearLine = (lineCount) => {
+  //  game.scoring.linesCleared(lineCount);
+  //};
   game.tetrominoes = new ShuffleBag([
-    Tetromino.I_SHAPE,
-    Tetromino.T_SHAPE,
-    Tetromino.L_SHAPE,
-    Tetromino.J_SHAPE,
-    Tetromino.T_SHAPE,
-    Tetromino.S_SHAPE,
-    Tetromino.Z_SHAPE,
-    Tetromino.O_SHAPE,
+    NewTetromino.I_SHAPE,
+    NewTetromino.T_SHAPE,
+    NewTetromino.L_SHAPE,
+    NewTetromino.J_SHAPE,
+    NewTetromino.T_SHAPE,
+    NewTetromino.S_SHAPE,
+    NewTetromino.Z_SHAPE,
+    NewTetromino.O_SHAPE,
   ]);
 
   document.addEventListener("keydown", (event) => {
